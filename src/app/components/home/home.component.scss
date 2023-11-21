@@ -1,0 +1,184 @@
+// .home-body{
+
+//   #carouselExampleAutoplaying {
+
+//     .carousel-inner {
+//       border-radius: 15px;
+//       height: 500px;
+//       margin: 10px;
+//       img {
+//         width: 100%;
+//         height: calc(100vh - 56px);
+//         object-fit: cover;
+//       }
+//     }
+
+//   }
+  
+
+// }
+
+// .carousel-control-prev, .carousel-control-next {
+//   width: 15%; 
+//   opacity: 0.5; 
+//   &:hover {
+//     opacity: 0.9; 
+//   }
+// }
+
+// .carousel-control-prev-icon, .carousel-control-next-icon {
+//   background-size: 2rem; 
+// }
+
+// .navbar-light {
+//   background-color: #171F58;
+//   margin-top: 0;
+//   padding-top: 1.5rem; 
+//   padding-bottom: 1.5rem;
+// }
+
+// .navbar {
+//   margin-bottom: 0;
+// }
+
+// .movie-container{
+//   // background: linear-gradient(to bottom,#373737, #e0e0e0 );
+//   width: 100%; 
+//   height: 100%; 
+//   justify-content: center; 
+//   align-items: center; 
+//   gap: 36px; 
+//   display: inline-flex; 
+//   ;
+// }
+//  .nav-link {
+//   color: #ffffff;
+// }
+
+// .btn-click {
+//   background-color: #2F2CCE;
+//   color: white;
+//   position: absolute;
+//   bottom: 0;
+// }
+
+// .btn-click:hover {
+//   color: #2F2CCE;
+//   background-color: white;
+// }
+
+// .btn-outline-light:hover {
+//   color: #373737;
+//   background-color: #2F2CCE;
+//   border-color: #2F2CCE;
+//   bottom: 20px;
+// }
+
+// .card {
+//   width: 250px;
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+// }
+
+// .nav-tabs {
+//   margin-top: 20px;
+// }
+
+// .btn-view-all {
+//   margin-top: 20px;
+//   color: #373737;
+// }
+
+// .navbar-third{
+//   background-color:#1E1E1E;
+//   color: white;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px 20px;
+            
+// }
+
+// .nav-tabs .nav-item .nav-link {
+//   text-decoration: none; /* Remove underline */
+// }
+
+// .container-center {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100vh;
+//   margin-bottom: 20px;
+// }
+
+// /* Additional styles for the card container */
+// .card-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   margin-bottom: 20px;
+// }
+
+// .contact-section {
+//   margin-top: 20px;
+// }
+
+// .navbar-third .container-fluid {
+//   margin: 0;
+//   padding: 0;
+// }
+// .navbar-fourth{
+//   background-color: black;
+//   color: white;
+// }
+
+.carousel-inner{
+  height: 500px;
+
+  .carousel-item img{
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .carousel-caption h1{
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 30px;
+    }
+
+  .carousel-caption h2{
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .carousel-caption p{
+    color: #ffffff;
+  }
+}
+
+.rowposter{
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.rowposter::-webkit-scrollbar{
+  display: none;
+}
+
+.rowimg{
+  max-height: 200px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.rowimg:hover{
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+.largeposter{
+  max-height: 300px;
+}

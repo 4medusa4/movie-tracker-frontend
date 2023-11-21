@@ -1,0 +1,33 @@
+/* styles.scss */
+
+/* Custom styles for the first navbar */
+.navbar-first {
+    background-color: #070B2E;
+    color: white;
+    text-decoration-color: white; 
+}
+.navbar-second {
+    background-color: #171F58;
+    color: white;
+    text-decoration-color: white; 
+}
+.form-control {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* Custom styles for the search button */
+.btn-outline-success {
+    background-color: #070B2E;
+    color: white;
+}
+
+/* Custom styles for the nav-pills in the second navbar */
+.navbar-second .nav-pills .nav-link {
+    color: white;
+}
+
+/* Custom style for the active link */
+.nav-pills .nav-link.active {
+    background-color: #070B2E;
+}

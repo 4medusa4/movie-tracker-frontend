@@ -8,13 +8,14 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service.servic
   styleUrls: ['./navbar-test.component.scss']
 })
 export class NavbarTestComponent implements OnInit{
+searchResult:any;
+searchMovieResult: any;
 
   constructor(private service:MovieApiServiceService){}
   ngOnInit(): void {
 
     }
 
-  searchResult:any;
 
   searchForm = new FormGroup({
     'movieName':new FormControl(null)
@@ -27,7 +28,16 @@ export class NavbarTestComponent implements OnInit{
       this.searchResult = result.results
     });
   }
-  navbg: { [klass: string]: any; } | null | undefined;
+
+  searchMovieData(){
+    this.service.trendingMovieApiData().subscribe((result)=>{
+      console.log(result, 'searchmovieresult#')
+      this.searchMovieResult = result.results;
+    });
+  }
+
+
+  // navbg: { [klass: string]: any; } | null | undefined;
   
 // navbg = any;
   // @HostListener('document:scroll') scrollover() {

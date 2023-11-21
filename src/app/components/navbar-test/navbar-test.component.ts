@@ -53,4 +53,3 @@ searchMovieResult: any;
   // }
 
 }
-

@@ -48,7 +48,7 @@
         padding-bottom: 5px; 
         border-bottom-left-radius: 40px;
         border-top-left-radius: 40px;
-        border-color: #151D20;
+        border: none;
     }
 
     .btn-signup{
@@ -63,6 +63,8 @@
         padding-bottom: 5px; 
         border-bottom-right-radius: 40px;
         border-top-right-radius: 40px;
+        border: none;
+
     }
 
 }
@@ -86,7 +88,7 @@
         line-height: 20px; 
         word-wrap: break-word
     }
-    .nav-link.active {
+    .nav-link:hover {
         background-color: #2F2CCE;
     }
 }
@@ -94,6 +96,8 @@
 .img-search{
     max-height: 200px;
     margin-right: 20px;
+    cursor: pointer;
+
 }
 
 .search-movie{

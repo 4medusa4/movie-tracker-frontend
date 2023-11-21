@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarTestComponent } from './components/navbar-test/navbar-test.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
+import { SeatsComponent } from './seats/seats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { BookingListComponent } from './components/booking-list/booking-list.com
     SearchComponent,
     MovieDetailsComponent,
     BookingListComponent,
+    SeatsComponent,
     ],
   imports: [
     BrowserModule,

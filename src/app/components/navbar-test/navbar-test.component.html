@@ -1,63 +1,64 @@
-<!-- <nav class="navbar navbar-expand-lg fixed-top"> -->
-    <div class="navbar-1">
-        <ul class="nav nav-pills">
-            <li >
-                <img class="image" src="assets/logo.png">
-            </li>
-            <li class="nav-item">
-                
-                <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
-                    <div>
-                        <input class="search-bar" type="text" placeholder="Search Movies" formControlName="movieName" [routerLink]="['/search']">
-                       
-                        <!-- <img class="icon" src="assets/search_icon.png"> -->
-                    </div>
-                    </form>
-            </li>
-            <li>
-                <button class="btn-login" [routerLink]="['/login']">Login</button>
-                <button class="btn-signup" [routerLink]="['/signup']">Sign Up</button>
-            </li>
-        </ul>
-        
-    </div>
-    <div class="navbar-2">
+
+    <!-- <nav class="navbar navbar-expand-lg fixed-top"> -->
+        <div class="navbar-1">
             <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/home">Home</a>
+                <li >
+                    <img class="image" src="assets/logo.png">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/movie">Movies</a>
+                    
+                    <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+                        <div>
+                            <input class="search-bar" type="text" placeholder="Search Movies" formControlName="movieName" [routerLink]="['/search']">
+                           
+                            <!-- <img class="icon" src="assets/search_icon.png"> -->
+                        </div>
+                        </form>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/booking-list">Bookings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/track-list">Track List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/aboutus">ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">CONTACTS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/account">Account</a>
+                <li>
+                    <button class="btn-login" [routerLink]="['/login']">Login</button>
+                    <button class="btn-signup" [routerLink]="['/signup']">Sign Up</button>
                 </li>
             </ul>
-    
-    </div>
-    <!-- </nav> -->
-    
-    <div class="row mt-5 search-movie">
-        <div class="col-lg-4" *ngFor="let s of searchResult">
-            <div class="row">
-                <div class="col-lg-3 mt-3 mb-3" *ngIf="s.poster_path">
-                    <img class="img-search" src="https://image.tmdb.org/t/p/original/{{s.poster_path}}" alt="..." [routerLink]="['/movie',s.id]">
-                </div>
-                <div class="col-lg-9">
-                    <h5>{{s.original_title}}</h5>
+            
+        </div>
+        <div class="navbar-2">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movie">Movies</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/booking-list">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/track-list">Track List</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">CONTACTS</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/account">Account</a>
+                    </li> -->
+                </ul>
+        
+        </div>
+        <!-- </nav> -->
+        
+        <div class="row mt-5 search-movie">
+            <div class="col-lg-4" *ngFor="let s of searchResult">
+                <div class="row">
+                    <div class="col-lg-3 mt-3 mb-3" *ngIf="s.poster_path">
+                        <img class="img-search" src="https://image.tmdb.org/t/p/original/{{s.poster_path}}" alt="..." [routerLink]="['/movie',s.id]">
+                    </div>
+                    <div class="col-lg-9">
+                        <h5>{{s.original_title}}</h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>

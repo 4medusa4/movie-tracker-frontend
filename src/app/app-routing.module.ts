@@ -17,6 +17,8 @@ import { SearchComponent } from './components/search/search.component';
 import { NavbarTestComponent } from './components/navbar-test/navbar-test.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,15 +27,18 @@ const routes: Routes = [
   {path:'aboutus', component: AboutusComponent},
   {path:'account', component: AccountComponent},
   {path:'bookings', component: BookingsComponent},
-  {path: 'booking-list', component: BookingListComponent},
+  {path:'booking-list', component: BookingListComponent},
   {path:'contact', component: ContactComponent},
   {path:'footer', component: FooterComponent},
   {path:'movie', component: MovieComponent},
   {path:'movie/:id', component: MovieDetailsComponent},
+  {path:'navbar', component: NavbarComponent},
   {path:'navbar-test', component: NavbarTestComponent},
+  {path:'navbar-user', component: NavbarComponent},
   {path:'login', component: LoginComponent},
   {path:'new-release-movies', component: NewReleaseMoviesComponent},
   {path:'search', component: SearchComponent},
+  {path:'search-movies', component: SearchMoviesComponent},
   {path:'signup', component: SignupComponent},
   {path:'track-list', component: TrackListComponent},
   {path:'trailer', component:TrailerComponent},

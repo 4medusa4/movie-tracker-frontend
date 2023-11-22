@@ -4,18 +4,19 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service.servic
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-navbar-user',
+  templateUrl: './navbar-user.component.html',
+  styleUrls: ['./navbar-user.component.scss']
 })
-export class SearchComponent implements OnInit{
+export class NavbarUserComponent {
+
   searchResult:any;
 searchMovieResult: any;
 
-constructor(private service:MovieApiServiceService, private router:Router){}
-
+  constructor(private service:MovieApiServiceService,  private router:Router){}
   ngOnInit(): void {
-  }
+
+    }
 
   searchForm = new FormGroup({
     'movieName':new FormControl(null)
@@ -35,5 +36,21 @@ constructor(private service:MovieApiServiceService, private router:Router){}
       this.searchMovieResult = result.results;
     });
   }
+
+
+  // navbg: { [klass: string]: any; } | null | undefined;
+  
+// navbg = any;
+  // @HostListener('document:scroll') scrollover() {
+  //   console.log(document.body.scrollTop, 'scrolllength#');
+
+  //   if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+  //     this.navbg = {
+  //       'background-color': '#ffffff'
+  //     };
+  //   } else {
+  //     this.navbg = {};
+  //   }
+  // }
 
 }

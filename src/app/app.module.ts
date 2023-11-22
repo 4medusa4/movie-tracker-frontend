@@ -26,6 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarTestComponent } from './components/navbar-test/navbar-test.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
+import { RouterModule } from '@angular/router';
+import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
+import { TestComponent } from './components/test/test.component';
+import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +52,9 @@ import { BookingListComponent } from './components/booking-list/booking-list.com
     SearchComponent,
     MovieDetailsComponent,
     BookingListComponent,
+    NavbarUserComponent,
+    TestComponent,
+    SearchMoviesComponent,
     ],
   imports: [
     BrowserModule,
@@ -53,7 +62,9 @@ import { BookingListComponent } from './components/booking-list/booking-list.com
     NgbModule,
     FontAwesomeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
+
   ],
   providers: [MovieApiServiceService],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
 
@@ -9,7 +10,7 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service.servic
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private service:MovieApiServiceService){}
+  constructor(private service:MovieApiServiceService,  private router:Router){}
 
   bannerResult:any=[]
   trendingMovieResult:any=[]

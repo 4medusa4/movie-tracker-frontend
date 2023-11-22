@@ -1,19 +1,18 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms'
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
 import { Router } from '@angular/router';
-
-
+import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
 @Component({
-  selector: 'app-navbar-test',
-  templateUrl: './navbar-test.component.html',
-  styleUrls: ['./navbar-test.component.scss']
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
 })
-export class NavbarTestComponent implements OnInit{
+export class TestComponent {
+
 searchResult:any;
 searchMovieResult: any;
 
-  constructor(private service:MovieApiServiceService, private router:Router){}
+  constructor(private service:MovieApiServiceService,  private router:Router){}
   ngOnInit(): void {
 
     }

@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms'
 import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -9,12 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit{
-  searchResult:any;
+searchResult:any;
 searchMovieResult: any;
+showSearchData: boolean = false;  // Add a boolean flag
 
-constructor(private service:MovieApiServiceService, private router:Router){}
+
+
+constructor(private service:MovieApiServiceService, private router:Router,     private route: ActivatedRoute
+  ){}
 
   ngOnInit(): void {
+    // Subscribe to route parameter changes
+    this.route.params.subscribe(params => {
+      // Check if the route parameter 'id' is present
+      this.showSearchData = !params['id'];
+    });
   }
 
   searchForm = new FormGroup({

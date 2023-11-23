@@ -19,11 +19,6 @@
         font-weight: 400; 
         line-height: 14px; 
         word-wrap: break-word;
-
-        .icon{
-            width: 20px; 
-            height: 20px; 
-        }
     }
 }
 .navbar-1{
@@ -39,6 +34,10 @@
         height: 50px;
         }
 
+        .image:hover{
+            cursor: pointer;
+        }
+
     .nav-pills{
         // justify-content: center; 
         // align-items: center; 
@@ -50,17 +49,18 @@
         align-items: center; 
 
         .nav-link {
-            color: #FBFBFB; 
+            color: #ffffff; 
             font-size: 16px; 
             font-family: Inter; 
             font-weight: 700; 
             text-transform: uppercase; 
             line-height: 20px; 
             word-wrap: break-word;
+            border-radius: 10px;
             
         }
         .nav-link:hover {
-            background-color: #2F2CCE;
+            background-color: #0F277C;
         }
     }
     
@@ -68,9 +68,12 @@
     // margin-left: 500px;
     display: flex;
     align-items: center;
+    font-weight: bold;
     .btn-login{
         background-color: #0F277C;
-        color: #ffffff; 
+        color: #ffffff;
+        font-weight: bold;
+
         height: 40px;
         width: 100px;
         padding-left: 16px; 
@@ -81,10 +84,16 @@
         border-top-left-radius: 40px;
         border: none;
     }
+    .btn-login:hover{
+        background-color: #2D9CDB;
+
+    }
 
     .btn-signup{
         background-color: #303C43;
         color: #ffffff; 
+        font-weight: bold;
+
         border-color: #151D20;
         height: 40px;
         width: 100px;
@@ -95,6 +104,36 @@
         border-bottom-right-radius: 40px;
         border-top-right-radius: 40px;
         border: none;
+    }
+
+    .btn-signup:hover{
+        background-color: #000000;
+
+    }
+
+    .btn-search{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .btn-search:hover{
+        background-color: #373737;
+        
+        color: #FBFBFB; 
+        font-size: 16px; 
+        font-family: Inter; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        line-height: 20px; 
+        word-wrap: break-word;
+    }
+
+    .icon{
+        width: 25px; 
+        height: 25px; 
     }
 
 }

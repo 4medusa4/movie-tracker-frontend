@@ -14,7 +14,6 @@ import { UpcomingMoviesComponent } from './components/upcoming-movies/upcoming-m
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
-import { NavbarTestComponent } from './components/navbar-test/navbar-test.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   {path:'movie', component: MovieComponent},
   {path:'movie/:id', component: MovieDetailsComponent},
   {path:'navbar', component: NavbarComponent},
-  {path:'navbar-test', component: NavbarTestComponent},
   {path:'navbar-user', component: NavbarComponent},
   {path:'login', component: LoginComponent},
   {path:'new-release-movies', component: NewReleaseMoviesComponent},

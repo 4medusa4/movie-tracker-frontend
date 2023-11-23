@@ -1,16 +1,4 @@
-.navbar-1{
-    width: 100%;
-    height: 70px;
-    background-color: #151D20;
-    padding: 10px;
-    justify-content: center; 
-    align-items: center; 
-    display: inline-flex;
-    .image{
-        height: 50px;
-        margin-bottom: 10px;
-        margin-right: 200px;
-        }
+.navbar-2{
     .search-bar{
         width: 700px; 
         height: 40px;
@@ -32,14 +20,62 @@
         line-height: 14px; 
         word-wrap: break-word;
 
-        .icon{
-            width: 20px; 
-            height: 20px; 
+       
+    }
+}
+.navbar-1{
+    width: 100%;
+    height: 70px;
+    background-color: #151D20;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .image{
+        height: 50px;
+        }
+
+        .image:hover{
+            cursor: pointer;
+        }
+
+    .nav-pills{
+        // justify-content: center; 
+        // align-items: center; 
+        // display: inline-flex;
+        // margin-left: 300px;  
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+
+        .nav-link {
+            color: #ffffff; 
+            font-size: 16px; 
+            font-family: Inter; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            line-height: 20px; 
+            word-wrap: break-word;
+            border-radius: 10px;
+            
+        }
+        .nav-link:hover {
+            background-color: #0F277C;
         }
     }
+    
+.btn-auth{
+    // margin-left: 500px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
     .btn-login{
         background-color: #0F277C;
-        color: #ffffff; 
+        color: #ffffff;
+        font-weight: bold;
+
         height: 40px;
         width: 100px;
         padding-left: 16px; 
@@ -50,10 +86,16 @@
         border-top-left-radius: 40px;
         border: none;
     }
+    .btn-login:hover{
+        background-color: #2D9CDB;
+
+    }
 
     .btn-signup{
         background-color: #303C43;
         color: #ffffff; 
+        font-weight: bold;
+
         border-color: #151D20;
         height: 40px;
         width: 100px;
@@ -64,33 +106,39 @@
         border-bottom-right-radius: 40px;
         border-top-right-radius: 40px;
         border: none;
+    }
+
+    .btn-signup:hover{
+        background-color: #000000;
 
     }
 
-}
-.navbar-2{
-    width: 100%;
-    height: 50px;
-    background-color: #0F277C;
-    padding: 8px; 
-    top: 7px; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 32px; 
-    display: inline-flex;
+    .btn-search{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
 
-    .nav-link {
+    .icon{
+        width: 25px; 
+        height: 25px; 
+    }
+    .btn-search:hover{
+        background-color: #373737;
+        
         color: #FBFBFB; 
         font-size: 16px; 
         font-family: Inter; 
         font-weight: 700; 
         text-transform: uppercase; 
         line-height: 20px; 
-        word-wrap: break-word
+        word-wrap: break-word;
     }
-    .nav-link:hover {
-        background-color: #2F2CCE;
-    }
+
+}
+    
 }
 
 .img-search{
@@ -102,4 +150,4 @@
 
 .search-movie{
     margin-left: 100px;
-}
+}   

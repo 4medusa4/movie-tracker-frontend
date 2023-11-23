@@ -43,8 +43,8 @@ fieldset {
     border-radius: 8px;
     padding: 20px;
     margin: 0 auto;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 85%, #1B1464 85%);
-    background: linear-gradient(to bottom, #1B1464 12%, #ccc 12%);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 85%, #0F277C 85%);
+    background: linear-gradient(to bottom, #0F277C 12%, #ccc 12%);
 }
 
 fieldset legend {
@@ -56,7 +56,7 @@ fieldset legend {
     justify-content: center;
     text-align: center;
     margin-left: 25px;
-    background-color: #1B1464; /* Color for the legend */
+    background-color: #0F277C; /* Color for the legend */
     padding: 5px; /* Padding for the legend */
 }
 
@@ -69,7 +69,7 @@ fieldset legend {
 }
 
 .btn-click {
-    background-color: #341F97;
+    background-color: #0F277C;
     color: white;
     width: 100%;
     padding: 10px;
@@ -80,7 +80,7 @@ fieldset legend {
 }
 
 .link-underline-primary {
-    color: #341F97;
+    color: #0F277C;
     text-decoration: underline;
 }
 

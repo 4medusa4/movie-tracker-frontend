@@ -1,0 +1,41 @@
+.rowposter{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  
+  .rowposter::-webkit-scrollbar{
+    display: none;
+  }
+
+  .card{
+    height: 400px;
+    padding: 10px;
+    width: 200px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: #151D20;
+    color: #ffffff;
+  }
+
+  .card:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+
+  }
+  
+  .rowimg{
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 3px; 
+
+  }
+  
+//   .rowimg:hover{
+//     transform: scale(1.08);
+//     cursor: pointer;
+//   }
+  
+  .largeposter{
+    max-height: 300px;
+  }

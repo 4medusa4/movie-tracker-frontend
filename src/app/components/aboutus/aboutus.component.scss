@@ -1,0 +1,36 @@
+.image-container {
+    margin: 200px;
+    padding: 100px;
+}
+
+.image-text h5 {
+    margin-bottom: 20px; /* Add space between heading and content */
+  }
+
+  .image-text h6 {
+    margin-bottom: 20px; /* Add space between heading and content */
+  }
+  
+  .image-text {
+    position: absolute;
+    // top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    width: 70%; // Adjust the width as needed
+    text-align: left; // Align the text to the left
+    margin: 0 auto; // Center the block of text horizontally
+
+    .heading{
+        color: #2D9CDB;
+    }
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -10px;
+}

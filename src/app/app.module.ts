@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 
@@ -22,16 +22,14 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieApiServiceService } from './service/movie-api-service.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NavbarTestComponent } from './components/navbar-test/navbar-test.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
-import { RouterModule } from '@angular/router';
 import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';
-import { TestComponent } from './components/test/test.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
-
-
+import { NavbarPrimaryComponent } from './components/navbar-primary/navbar-primary.component';
+import { TrackingsComponent } from './components/trackings/trackings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +39,6 @@ import { SearchMoviesComponent } from './components/search-movies/search-movies.
     LoginComponent,
     SignupComponent,
     MovieComponent,
-    NavbarTestComponent,
     NewReleaseMoviesComponent,
     UpcomingMoviesComponent,
     BookingsComponent,
@@ -53,8 +50,9 @@ import { SearchMoviesComponent } from './components/search-movies/search-movies.
     MovieDetailsComponent,
     BookingListComponent,
     NavbarUserComponent,
-    TestComponent,
     SearchMoviesComponent,
+    NavbarPrimaryComponent,
+    TrackingsComponent
     ],
   imports: [
     BrowserModule,
@@ -64,7 +62,6 @@ import { SearchMoviesComponent } from './components/search-movies/search-movies.
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule
-
   ],
   providers: [MovieApiServiceService],
   bootstrap: [AppComponent]

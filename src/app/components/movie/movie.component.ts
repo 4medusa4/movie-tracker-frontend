@@ -16,14 +16,11 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
     this.trendingMovieData();
   }
-
-
-
-trendingMovieData(){
+  
+  trendingMovieData(){
   this.service.trendingMovieApiData().subscribe((result)=>{
     console.log(result, 'trendingmovieresult#')
     this.trendingMovieResult = result.results;
-  });
-}
-
+    });
+  }
 }

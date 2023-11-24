@@ -18,6 +18,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { BookingListComponent } from './components/booking-list/booking-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:'track-list', component: TrackListComponent},
   {path:'trailer', component:TrailerComponent},
   {path:'upcoming-movies', component:UpcomingMoviesComponent},
+  {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'**', component: HomeComponent}
 ];
 

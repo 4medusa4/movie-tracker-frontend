@@ -30,6 +30,7 @@ import { RouterModule } from '@angular/router';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { NavbarPrimaryComponent } from './components/navbar-primary/navbar-primary.component';
 import { TrackingsComponent } from './components/trackings/trackings.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { TrackingsComponent } from './components/trackings/trackings.component';
     NavbarUserComponent,
     SearchMoviesComponent,
     NavbarPrimaryComponent,
-    TrackingsComponent
+    TrackingsComponent,
+    ForgotPasswordComponent
     ],
   imports: [
     BrowserModule,

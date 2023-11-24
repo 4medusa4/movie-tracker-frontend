@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,9 @@ import { Observable } from 'rxjs';
 export class MovieApiServiceService {
 
   constructor(private http:HttpClient) { }
+
+  // baseurl = "https://api.themoviedb.org/3";
+  // apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
 
   baseurl = "https://api.themoviedb.org/3";
   apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";

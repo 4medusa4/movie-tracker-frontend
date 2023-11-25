@@ -1,6 +1,6 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
 
@@ -35,6 +35,7 @@ import { TrackingsComponent } from './components/trackings/trackings.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
+import AuthService from './service/auth-service/auth-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,7 @@ import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-detai
     ForgotPasswordComponent,
     CheckoutComponent,
     UpcomingMovieDetailsComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -72,7 +73,7 @@ import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-detai
     RouterModule,
     FormsModule
   ],
-  providers: [MovieApiServiceService],
+  providers: [MovieApiServiceService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

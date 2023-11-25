@@ -45,6 +45,9 @@ fieldset {
     margin: 0 auto;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 85%, #0F277C 85%);
     background: linear-gradient(to bottom, #0F277C 12%, #ccc 12%);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    
 }
 
 fieldset legend {
@@ -58,10 +61,12 @@ fieldset legend {
     margin-left: 25px;
     background-color: #0F277C; /* Color for the legend */
     padding: 5px; /* Padding for the legend */
+    
 }
-
   
-  
+ .form{
+    padding-top: 20px;
+ } 
 
 .form-control {
     width: 100%;

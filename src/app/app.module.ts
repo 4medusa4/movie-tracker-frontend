@@ -1,6 +1,8 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +33,7 @@ import { SearchMoviesComponent } from './components/search-movies/search-movies.
 import { NavbarPrimaryComponent } from './components/navbar-primary/navbar-primary.component';
 import { TrackingsComponent } from './components/trackings/trackings.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +57,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     SearchMoviesComponent,
     NavbarPrimaryComponent,
     TrackingsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CheckoutComponent
     ],
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [MovieApiServiceService],
   bootstrap: [AppComponent]

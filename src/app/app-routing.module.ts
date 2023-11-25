@@ -19,6 +19,7 @@ import { BookingListComponent } from './components/booking-list/booking-list.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:'account', component: AccountComponent},
   {path:'aboutus', component: AboutusComponent},
   {path:'account', component: AccountComponent},
-  {path:'bookings', component: BookingsComponent},
+  {path:'bookings/:id', component: BookingsComponent},
+  {path:'checkout', component: CheckoutComponent},
   {path:'booking-list', component: BookingListComponent},
   {path:'contact', component: ContactComponent},
   {path:'footer', component: FooterComponent},

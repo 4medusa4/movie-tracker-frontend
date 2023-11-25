@@ -1,6 +1,6 @@
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
 
@@ -34,6 +34,7 @@ import { NavbarPrimaryComponent } from './components/navbar-primary/navbar-prima
 import { TrackingsComponent } from './components/trackings/trackings.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import AuthService from './service/auth-service/auth-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     TrackingsComponent,
     ForgotPasswordComponent,
     CheckoutComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,7 +71,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     RouterModule,
     FormsModule
   ],
-  providers: [MovieApiServiceService],
+  providers: [MovieApiServiceService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,99 @@
+
+.app-layout {
+    margin: 0;
+    padding: 0;
+    height: auto;
+  }
+  
+  .image-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 700px;
+    margin-bottom: -20px; /* Adjust the negative margin as needed */
+  }
+  
+  .image-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    width: 80%;
+    text-align: left;
+    margin: 0 auto;
+  }
+  
+  .image-text h5,
+  .image-text h6 {
+    margin-bottom: 20px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 700px;
+    display: block;
+    margin-bottom: -10px;
+  }
+  
+  .form-container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 50%;
+    background-color:#2D3436;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .row.g-3 {
+    margin-bottom: 10px;
+    padding: 20px;
+  }
+  
+  .form-control {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
+  
+  .form-label {
+    color: white;
+  }
+  
+  .btn-primary {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #0F277C;
+    border: #0F277C;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  #input::placeholder {
+    color: #636E72;
+  }
+  .payment-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .payment-button {
+    background-color: #1E1E1E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    width: 50%;
+  }
+  
+  .payment-button.selected {
+    background-color: #0F277C;
+    width: 50%;
+  }
+  

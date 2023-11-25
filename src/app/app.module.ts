@@ -34,6 +34,7 @@ import { NavbarPrimaryComponent } from './components/navbar-primary/navbar-prima
 import { TrackingsComponent } from './components/trackings/trackings.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     NavbarPrimaryComponent,
     TrackingsComponent,
     ForgotPasswordComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    UpcomingMovieDetailsComponent
     ],
   imports: [
     BrowserModule,

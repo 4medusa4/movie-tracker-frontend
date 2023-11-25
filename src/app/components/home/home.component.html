@@ -187,7 +187,7 @@
             <a href="/upcoming-movies">View All</a>        
             <div class="rowposter">
                 <ng-container *ngFor="let t of trendingMovieResult">
-                    <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',t.id]">
+                    <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/upcoming-movie',t.id]">
                 </ng-container>
         </div>
         </div>

@@ -8,25 +8,27 @@ export default class AuthService {
 
   private BASE_URL: string = "http://localhost:8080/api/v1";
 
-  newUserSignUp(_data: any): Observable<any> {
+  newUserSignUp(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     const url = `${this.BASE_URL}/auth/register`
     return new Observable((observer) => {
       axios.post(url, _data)
         .then(res => {
+          successCallback(res)
           observer.next(res.data);
           observer.complete();
-        }).catch(e => console.error(e))
+        }).catch(e => errorCallback(e))
     })
   }
 
-  newUserLogin(_data: any): Observable<any> {
+  newUserLogin(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     const url = `${this.BASE_URL}/auth/authenticate`
     return new Observable((observer) => {
       axios.post(url, _data)
         .then(res => {
+          successCallback(res)
           observer.next(res.data);
           observer.complete();
-        }).catch(e => console.error(e))
+        }).catch(e => errorCallback(e))
     })
   }
 

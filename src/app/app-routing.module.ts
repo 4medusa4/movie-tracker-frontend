@@ -20,6 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { TrackingsComponent } from './components/trackings/trackings.component';
+import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -42,8 +44,10 @@ const routes: Routes = [
   {path:'search-movies', component: SearchMoviesComponent},
   {path:'signup', component: SignupComponent},
   {path:'track-list', component: TrackListComponent},
+  {path:'trackings/:id', component:TrackingsComponent},
   {path:'trailer', component:TrailerComponent},
   {path:'upcoming-movies', component:UpcomingMoviesComponent},
+  {path:'upcoming-movie/:id', component:UpcomingMovieDetailsComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'**', component: HomeComponent}
 ];

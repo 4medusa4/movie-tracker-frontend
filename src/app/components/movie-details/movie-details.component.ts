@@ -25,8 +25,7 @@ export class MovieDetailsComponent implements OnInit {
     console.log(getParamId, 'getparamid#');
     this.getMovie(getParamId);
     this.getMovieTrailer(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
-    this.getMovieCast(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
-    this.getMovieCrew(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
+    this.getMovieCredits(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
 
   }
 
@@ -47,15 +46,10 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  getMovieCast(id: any, successCallback: Function, errorCallback: Function) {
+  getMovieCredits(id: any, successCallback: Function, errorCallback: Function) {
     this.service.getMovieCredits(id, successCallback, errorCallback).subscribe((result) => {
-      this.getMovieCastResult = result.cast;
-    });
-  }
-
-  getMovieCrew(id: any, successCallback: Function, errorCallback: Function) {
-    this.service.getMovieCredits(id, successCallback, errorCallback).subscribe((result) => {
-      this.getMovieCrewResult = result.crew;
+      this.getMovieCastResult = result.cast.slice(0, 10);
+      this.getMovieCrewResult = result.crew.slice(0, 3);
     });
   }
 }

@@ -36,6 +36,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
 import AuthService from './service/auth-service/auth-service.service';
+import { comingsoonMoviesComponent } from './components/comingsoon-movies/comingsoon-movies.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,8 @@ import AuthService from './service/auth-service/auth-service.service';
     TrackingsComponent,
     ForgotPasswordComponent,
     CheckoutComponent,
-    UpcomingMovieDetailsComponent
+    UpcomingMovieDetailsComponent,
+    comingsoonMoviesComponent
   ],
   imports: [
     BrowserModule,

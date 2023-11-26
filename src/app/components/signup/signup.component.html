@@ -3,7 +3,9 @@
     <!-- <img src="assets/bg.png" alt="bg.png" class="d-block w-100"> -->
     <div class="form-container">
       <fieldset>
-        <legend>Register to Movie Tracker</legend>
+        <legend>
+          <img src="assets/account.png" class="icon">
+        </legend>        
         <div class="form">
           <div class="mb-3">
             <label for="firstname" class="form-label">First Name</label>
@@ -37,8 +39,8 @@
           </div>
           <button type="submit" class="btn btn-click" (click)="onSubmitHandler()">REGISTER</button>
           <hr>
-          <div id="emailHelp" class="form-text">Already have an account ?
-            <a href="login" class="link-underline-primary">Login Now</a>
+          <div id="emailHelp" class="form-text text-center">Already have an account ?
+            <a href="login" class="link-underline-primary register">Login Now</a>
           </div>
         </div>
       </fieldset>

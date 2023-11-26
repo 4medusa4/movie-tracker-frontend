@@ -1,6 +1,6 @@
-import { Component, HostListener,Input, ElementRef, Renderer2, ViewChild, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms'
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
+import { Component, HostListener, Input, ElementRef, Renderer2, ViewChild, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms'
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -15,36 +15,37 @@ export class TrackingsComponent implements OnInit {
   @Input() dates: Date[] = [];
   @ViewChild('dateSelector', { static: false }) dateSelector?: ElementRef;
   @ViewChild(NgModel) ngModel!: NgModel;
-  getMovieResult:any;
+  getMovieResult: any;
 
 
   scrollPosition = 0;
   itemWidth = 100; // Adjust based on the width of your date items
   containerWidth = 300; // Adjust based on the width of your container
 
-private scrollSubject=new Subject<number>();
-date!: Date;
+  private scrollSubject = new Subject<number>();
+  date!: Date;
   selectedDate!: string;
   selectedTicketCount: string = '';
 
-  constructor(private service:MovieApiServiceService, private router:ActivatedRoute, private renderer: Renderer2,private cdr:ChangeDetectorRef) {
+  constructor(private service: MovieApiServiceService, private router: ActivatedRoute, private renderer: Renderer2, private cdr: ChangeDetectorRef) {
     this.generateDates();
-    this.scrollSubject.pipe(debounceTime(50)).subscribe(delta=>this.scrollContainer(delta));
+    this.scrollSubject.pipe(debounceTime(50)).subscribe(delta => this.scrollContainer(delta));
   }
   ngOnInit(): void {
     let getParamId = this.router.snapshot.paramMap.get('id');
-    console.log(getParamId,'getparamid#');
-    this.getMovie(getParamId);  }
- 
+    console.log(getParamId, 'getparamid#');
+    this.getMovie(getParamId);
+  }
 
-  getMovie(id:any){
-    this.service.getMovieDetails(id).subscribe((result)=>{
+
+  getMovie(id: any) {
+    this.service.getMovieDetails(id).subscribe((result) => {
       console.log(result, 'getmoviedetails#')
       this.getMovieResult = result;
     });
   }
 
- 
+
 
   generateDates() {
     // Generate dates for the next 30 days
@@ -58,7 +59,7 @@ date!: Date;
   getFullDayName(date: Date): string {
     return date.toLocaleDateString('en-US', { weekday: 'long' });
   }
-  
+
 
   // @HostListener('wheel', ['$event'])
   // handleWheelEvent(event: WheelEvent) {
@@ -72,7 +73,7 @@ date!: Date;
   // }
 
   public scrollContainer(delta: number) {
-    console.log('Delta:',delta)
+    console.log('Delta:', delta)
     if (this.dateSelector) {
       const container = this.dateSelector.nativeElement;
       const maxScroll = this.dates.length * this.itemWidth - this.containerWidth;
@@ -88,7 +89,7 @@ date!: Date;
       this.renderer.setStyle(container, 'transform', `translateX(-${this.scrollPosition}px)`);
     }
     this.cdr.detectChanges();
-    console.log('Scroll Position:',this.scrollPosition);
+    console.log('Scroll Position:', this.scrollPosition);
   }
 
   dateSelectorTransform = 0; // Initialize the transform
@@ -119,7 +120,7 @@ date!: Date;
   // ... (your existing code)
 
   selectDate(selectedDate: Date) {
-    
+
     if (this.dateSelector) {
       // Clear the 'selected' class from all dates
       this.dates.forEach((date, index) => {
@@ -128,10 +129,10 @@ date!: Date;
           this.renderer.removeClass(dateElement, 'selected');
         }
       });
-  
+
       // Find the index of the selected date
       const index = this.dates.findIndex(date => date === selectedDate);
-  
+
       if (index !== -1) {
         // Add the 'selected' class to the clicked date
         const dateElement = this.dateSelector.nativeElement.children[index];
@@ -141,29 +142,29 @@ date!: Date;
         } else {
           console.log('Date Element is undefined for index:', index);
         }
-  
+
         // Update the selected date index
         this.selectedDateIndex = index;
-        this.selectedDate=this.formatDate(selectedDate);
+        this.selectedDate = this.formatDate(selectedDate);
         this.selectedShowDate = selectedDate;
-  
-        console.log('Selected Date:',this. selectedDate);
+
+        console.log('Selected Date:', this.selectedDate);
       } else {
         console.log('Selected Date not found in the dates array.');
       }
     } else {
       console.log('Date Selector is undefined.');
     }
-   
-    
+
+
   }
-  
-  
+
+
   formatDate(date: Date): string {
     const month = date.toLocaleString('default', { month: 'short' });
     const dayOfMonth = date.getDate();
     const dayOfWeek = date.toLocaleString('default', { weekday: 'short' });
-  
+
     return `${month}\n${dayOfMonth}\n${dayOfWeek}`;
   }
   todayDate: Date = new Date();
@@ -200,11 +201,11 @@ date!: Date;
       if (selectedTimeElement) {
         selectedTimeElement.classList.add('selected');
       }
-      this.selectedTime=this.formatTime(selectedTime);
+      this.selectedTime = this.formatTime(selectedTime);
 
-      
+
     }
-    
+
   }
   ticketCount: number = 0; // Initial number of tickets
 
@@ -219,8 +220,8 @@ date!: Date;
       this.updateSelectedTicketCount();
     }
   }
-  updateSelectedTicketCount(){
-    
+  updateSelectedTicketCount() {
+
   }
 
   rows = ['A', 'B', 'C', 'D', 'E'];
@@ -265,17 +266,17 @@ date!: Date;
     this.selectedLocation = location;
     console.log('Selected location:', this.selectedLocation);
   }
-  onLocationChange(){
-    console.log('selected',this.selectedLocation);
+  onLocationChange() {
+    console.log('selected', this.selectedLocation);
   }
 
   private pricePerTicket: number = 1000; // Replace with your actual price
 
-// ...
+  // ...
 
-calculateTotalAmount(): number {
-  return this.ticketCount  * this.pricePerTicket;
-}
+  calculateTotalAmount(): number {
+    return this.ticketCount * this.pricePerTicket;
+  }
 
 
 

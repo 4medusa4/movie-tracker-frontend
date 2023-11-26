@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms'
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
+import { FormControl, FormGroup } from '@angular/forms'
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,15 +8,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit{
-searchResult:any;
-searchMovieResult: any;
-showSearchData: boolean = false;  // Add a boolean flag
+export class SearchComponent implements OnInit {
+  searchResult: any;
+  searchMovieResult: any;
+  showSearchData: boolean = false;  // Add a boolean flag
 
 
 
-constructor(private service:MovieApiServiceService, private router:Router,     private route: ActivatedRoute
-  ){}
+  constructor(private service: MovieApiServiceService, private router: Router, private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     // Subscribe to route parameter changes
@@ -27,19 +27,19 @@ constructor(private service:MovieApiServiceService, private router:Router,     p
   }
 
   searchForm = new FormGroup({
-    'movieName':new FormControl(null)
+    'movieName': new FormControl(null)
   });
 
-  submitForm(){
+  submitForm() {
     console.log(this.searchForm.value, 'searchForm#')
-    this.service.getSearchMovie(this.searchForm.value).subscribe((result)=>{
-      console.log(result,'searchmovie#');
+    this.service.getSearchMovie(this.searchForm.value).subscribe((result) => {
+      console.log(result, 'searchmovie#');
       this.searchResult = result.results
     });
   }
 
-  searchMovieData(){
-    this.service.trendingMovieApiData().subscribe((result)=>{
+  searchMovieData() {
+    this.service.trendingMovieApiData().subscribe((result) => {
       console.log(result, 'searchmovieresult#')
       this.searchMovieResult = result.results;
     });

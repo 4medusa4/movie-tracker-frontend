@@ -23,7 +23,7 @@ import { AccountComponent } from './components/account/account.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
-import { MovieApiServiceService } from './service/movie-api-service.service';
+import { MovieApiServiceService } from './service/movie-api-service/movie-api-service.service';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
 import { NavbarUserComponent } from './components/navbar-user/navbar-user.component';

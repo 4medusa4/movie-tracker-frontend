@@ -3,35 +3,42 @@
     <img src="assets/bg.png" alt="bg.png" class="d-block w-100">
     <div class="form-container">
       <fieldset>
-        <legend>
-          <img src="assets/iconlogin.png" class="icon">
-        </legend>
-        <div class="mb-3 text-center"> 
-          <label for="exampleFormControlInput1" class="form-label2">Full Name</label>
-          <input type="email" class="form-control2" id="exampleFormControlInput1">
-        </div>
-        <div class="mb-3 text-center"> 
-          <label for="exampleFormControlInput1" class="form-label2">Phone</label>
+        <legend>Register to Movie Tracker</legend>
+        <div class="form">
+          <div class="mb-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input [(ngModel)]="userFirstName" type="email" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input [(ngModel)]="userLastName" type="email" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <label for="phone" class="form-label">Phone</label>
           <div class="input-group flex-nowrap">
             <span class="input-group-text span" id="addon-wrapping">+94</span>
             <input type="text" class="form-control2"  aria-label="Username" aria-describedby="addon-wrapping">
           </div>
-        </div>
-        <div class="mb-3 text-center"> 
-          <label for="exampleFormControlInput1" class="form-label2">Email</label>
-          <input type="email" class="form-control2" id="exampleFormControlInput1">
-        </div>
-        <div class="mb-3 text-center"> 
-          <label for="exampleInputPassword1" class="form-label2">Password</label>
-          <input type="password" class="form-control2" id="exampleInputPassword1">
-          <label for="exampleInputPassword1" class="form-label2">Confirm Password</label>
-          <input type="password" class="form-control2" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-click">REGISTER</button>
-        <hr>
-        <div class="form-text text-center">
-          Already have an account?
-          <a href="login" class="link-underline-primary register"> Log In</a>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input [(ngModel)]="userEmail" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input [(ngModel)]="userPassword" type="password" class="form-control" id="password">
+            <div id="emailHelp" class="form-text2 forget">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmpassword">
+            <div id="emailHelp" class="form-text2 forget">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-click" (click)="onSubmitHandler()">REGISTER</button>
+          <hr>
+          <div id="emailHelp" class="form-text">Already have an account ?
+            <a href="login" class="link-underline-primary">Login Now</a>
+          </div>
         </div>
       </fieldset>
     </div>

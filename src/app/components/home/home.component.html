@@ -169,13 +169,37 @@
     </div>
     <!--banner end-->
 
+    <div class="spn-language container mt-3">
+        <!-- <label for="languageSelect" class="spn-language">Select Language:</label> -->
+        <select class="form-select" id="languageSelect" (change)="onLanguageChange($event)">
+            <option value="en">English</option>
+            <option value="si">Sinhala</option>
+            <option value="ta">Tamil</option>
+            <option value="hi">Hindi</option>
+            
+        </select>
+    </div>
+
     <div class="new-release-movies container mt-3 p-3">
         <div class="row">
-            <h4 class="text-white">New Release Movies</h4>
+            <h4 class="text-white">Now Showing</h4>
             <a href="/new-release-movies">View All</a>        
             <div class="rowposter">
                 <ng-container *ngFor="let t of trendingMovieResult">
                     <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',t.id]">
+                </ng-container> 
+            </div>
+        </div>
+    </div>
+
+    <div class="new-release-movies container mt-3 p-3">
+        <div class="row">
+            <h4 class="text-white">Coming Soon</h4>
+            <h6 class="info">Ticket bookings available</h6>
+            <a href="/comingsoon-movies">View All</a>        
+            <div class="rowposter">
+                <ng-container *ngFor="let c of comingSoonMovieResult">
+                    <img src="https://image.tmdb.org/t/p/original/{{ c.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',c.id]">
                 </ng-container> 
             </div>
         </div>

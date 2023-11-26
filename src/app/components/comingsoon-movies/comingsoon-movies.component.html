@@ -2,11 +2,11 @@
     <div class="row align-items-center justify-content-center">
         <h4 class="text-white">Upcoming Movies</h4>
         <div class="poster d-flex flex-wrap justify-content-center">
-            <ng-container *ngFor="let u of upcomingMovieResult">
+            <ng-container *ngFor="let c of comingsoonMovieResult">
                 <div class="card mb-5">
-                    <img src="https://image.tmdb.org/t/p/original/{{ u.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',u.id]">
+                    <img src="https://image.tmdb.org/t/p/original/{{ c.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',c.id]">
                     <div class="card-body">
-                        <h6>{{u.original_title}}</h6>    
+                        <h6>{{c.original_title}}</h6>    
                     </div>
                   </div>
                 <!-- <div class="card">

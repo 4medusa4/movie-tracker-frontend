@@ -1,4 +1,5 @@
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import AuthService from 'src/app/service/auth-service/auth-service.service'
 
 @Component({
@@ -14,7 +15,7 @@ export class SignupComponent {
   userEmail: string = '';
   userPhone: string = '';
   userPassword: string = '';
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmitHandler = () => {
     const data = {
@@ -26,8 +27,18 @@ export class SignupComponent {
       'role': 'USER'
     }
 
-    const resp = this.authService
-      .newUserSignUp(data)
+    this.authService.newUserSignUp(
+      data,
+      this.onSuccessHandler,
+      this.onErrorHandler)
       .subscribe()
+  }
+
+  onSuccessHandler = (response: any) => {
+    this.router.navigate(['/login'], { queryParams: { success: true } })
+  }
+
+  onErrorHandler = (e: any) => {
+    console.log(e)
   }
 }

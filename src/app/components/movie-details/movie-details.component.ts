@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
 
 
@@ -8,21 +8,21 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service.servic
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
-  
+
 })
 export class MovieDetailsComponent implements OnInit {
-  getMovieResult:any;
-  getMovieTrailerResult:any
+  getMovieResult: any;
+  getMovieTrailerResult: any
   getMovieCastResult: any;
   getMovieCrewResult: any;
 
 
-  constructor(private service:MovieApiServiceService, private router:ActivatedRoute){}
+  constructor(private service: MovieApiServiceService, private router: ActivatedRoute) { }
 
 
   ngOnInit(): void {
     let getParamId = this.router.snapshot.paramMap.get('id');
-    console.log(getParamId,'getparamid#');
+    console.log(getParamId, 'getparamid#');
     this.getMovie(getParamId);
     this.getMovieTrailer(getParamId);
     this.getMovieCast(getParamId);
@@ -30,33 +30,33 @@ export class MovieDetailsComponent implements OnInit {
 
   }
 
-  getMovie(id:any){
-    this.service.getMovieDetails(id).subscribe((result)=>{
+  getMovie(id: any) {
+    this.service.getMovieDetails(id).subscribe((result) => {
       console.log(result, 'getmoviedetails#')
       this.getMovieResult = result;
     });
   }
 
-  getMovieTrailer(id:any){
-    this.service.getMovieTrailer(id).subscribe((result)=>{
+  getMovieTrailer(id: any) {
+    this.service.getMovieTrailer(id).subscribe((result) => {
       console.log(result, 'getmovietrailer#')
-      result.results.forEach((element:any) => {
-        if(element.type=="Trailer"){
-          this.getMovieTrailerResult=element.key
+      result.results.forEach((element: any) => {
+        if (element.type == "Trailer") {
+          this.getMovieTrailerResult = element.key
         }
       });
     });
   }
 
-  getMovieCast(id:any){
-    this.service.getMovieCast(id).subscribe((result)=>{
+  getMovieCast(id: any) {
+    this.service.getMovieCast(id).subscribe((result) => {
       console.log(result, 'getmoviecast#')
       this.getMovieCastResult = result.cast;
     });
   }
 
-  getMovieCrew(id:any){
-    this.service.getMovieCrew(id).subscribe((result)=>{
+  getMovieCrew(id: any) {
+    this.service.getMovieCrew(id).subscribe((result) => {
       console.log(result, 'getmoviecrew#')
       this.getMovieCrewResult = result.crew;
     });

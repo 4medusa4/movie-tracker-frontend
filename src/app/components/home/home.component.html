@@ -186,8 +186,8 @@
             <h4 class="text-white">Upcoming Movies</h4>
             <a href="/upcoming-movies">View All</a>        
             <div class="rowposter">
-                <ng-container *ngFor="let t of trendingMovieResult">
-                    <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/upcoming-movie',t.id]">
+                <ng-container *ngFor="let u of upcomingMovieResult">
+                    <img src="https://image.tmdb.org/t/p/original/{{ u.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/upcoming-movie',u.id]">
                 </ng-container>
         </div>
         </div>

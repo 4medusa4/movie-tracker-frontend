@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms'
-import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
+import { FormControl, FormGroup } from '@angular/forms'
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,28 +10,28 @@ import { Router } from '@angular/router';
 })
 export class NavbarUserComponent {
 
-  searchResult:any;
-searchMovieResult: any;
+  searchResult: any;
+  searchMovieResult: any;
 
-  constructor(private service:MovieApiServiceService,  private router:Router){}
+  constructor(private service: MovieApiServiceService, private router: Router) { }
   ngOnInit(): void {
 
-    }
+  }
 
   searchForm = new FormGroup({
-    'movieName':new FormControl(null)
+    'movieName': new FormControl(null)
   });
 
-  submitForm(){
+  submitForm() {
     console.log(this.searchForm.value, 'searchForm#')
-    this.service.getSearchMovie(this.searchForm.value).subscribe((result)=>{
-      console.log(result,'searchmovie#');
+    this.service.getSearchMovie(this.searchForm.value).subscribe((result) => {
+      console.log(result, 'searchmovie#');
       this.searchResult = result.results
     });
   }
 
-  searchMovieData(){
-    this.service.trendingMovieApiData().subscribe((result)=>{
+  searchMovieData() {
+    this.service.trendingMovieApiData().subscribe((result) => {
       console.log(result, 'searchmovieresult#')
       this.searchMovieResult = result.results;
     });
@@ -39,8 +39,8 @@ searchMovieResult: any;
 
 
   // navbg: { [klass: string]: any; } | null | undefined;
-  
-// navbg = any;
+
+  // navbg = any;
   // @HostListener('document:scroll') scrollover() {
   //   console.log(document.body.scrollTop, 'scrolllength#');
 

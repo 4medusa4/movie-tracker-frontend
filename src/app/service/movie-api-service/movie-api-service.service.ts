@@ -23,6 +23,7 @@ export class MovieApiServiceService {
   console.log('Updating language to:', language);
   this.selectedLanguage = language;
   console.log('Selected language updated to:', this.selectedLanguage);
+
   }
 
     // Method to get the currently selected language

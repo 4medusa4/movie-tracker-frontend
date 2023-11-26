@@ -34,10 +34,10 @@ export class HomeComponent implements OnInit {
   onLanguageChange(event: any) {
     const selectedLanguage = event.target.value;
     this.service.updateLanguage(selectedLanguage);
-    // Perform actions based on the selected language, e.g., update content, make API calls, etc.
-    console.log('Selected Language:', selectedLanguage);
-    this.service.updateLanguage(selectedLanguage);
-    console.log('Selected Language in service:', this.service.getSelectedLanguage());
+    this.trendingMovieData();
+    this.upcomingMovieData();
+    this.comingSoonMovieData();
+
 }
 
   trendingMovieData() {

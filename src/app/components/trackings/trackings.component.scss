@@ -22,6 +22,7 @@ align-items: center;
 
 .p-3 col .mb-3.row{
   justify-content: left;
+  width: 400px;
 }
 .form-label{
 margin-left: 0;
@@ -30,6 +31,7 @@ margin-left: 0;
   margin-top: 40px;
   font-weight: bold;
   text-transform: uppercase;
+color: white;
 }
 
 .form-control2{
@@ -48,6 +50,8 @@ margin-left: 0;
   border-left: transparent;
   border-right: transparent;
   font-size: 17px;
+  width: 400px;
+
 }.date-selector-container {
 width: 500px;
 overflow: hidden;
@@ -88,13 +92,6 @@ cursor: pointer;
 top: 35px; /* Adjust as needed */
 }
 
-.left-arrow {
-left: 0; /* Adjust as needed */
-}
-
-.right-arrow {
-right: 0; /* Adjust as needed */
-}
 .time-selector-container {
 overflow: hidden;
 width: 500px; /* Adjust the width as needed */
@@ -151,20 +148,6 @@ width: 200px;
 height: auto;
 }
 
-.card-summery {
-width: 100px; /* Adjust the card width as needed */
-margin: 5px;
-// border: 1px solid #ccc;
-border-radius: 5px;
-background-color: transparent;
-color: white;
-align-items: center;
-}
-
-.card-img-summery {
-width: 100px;
-height: auto;
-}
 
 .card-body {
 padding: 10px;
@@ -194,39 +177,7 @@ color: white;
 font-size: 16px;
 margin: 0 10px;
 }
-.seat-container-container {
-display: flex;
-flex-wrap: wrap;
-background-color: #2D3436;
-border-radius: 5px;
-width: 500px;
-}
 
-.seat-row {
-display: flex;
-}
-
-.seat {
-width: 40px;
-height: 40px;
-margin: 5px;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-font-weight: bold;
-border-radius: 5px;
-color: #fff;
-background-color: #fff; // Default color for available seats
-}
-
-.seat-container-container .selected {
-background-color: #3498db; // Color for selected seats
-}
-
-.seat-container-container .not-available {
-background-color: #636e72; // Color for not available seats
-}
 
 .confirm-button {
 margin-top: 20px;
@@ -270,16 +221,18 @@ background-color: #0F277C;
 
 .available .legend-color {
 background-color: #fff;
-}.summary-container {
+}
+
+.summary-container {
 display: flex;
 flex-direction: column; /* Change to column layout */
 align-items: center;
-background-color: #151D20;
-border-radius: 5px;
-padding: 10px;
-width: 350px;
-height: 750px;
+background-color: #4f4f53;
+width: 400px;
+height: 150px;
 border-radius: 10px;
+padding: 10px;
+margin-left: 10px;
 }
 
 .form-card {
@@ -292,6 +245,7 @@ margin-bottom: 10px; /* Add margin to separate movie card and h6 elements */
 .mb-3.row {
 display: flex;
 justify-content: space-between;
+width: 400px;
 }
 .col-6{
 width: 140px;
@@ -346,5 +300,12 @@ margin-bottom: 5px;
 display: block;
 font-weight: bold;
 }
-
-
+.form-switch {
+  margin-left: 10px;
+}
+.check{
+  margin-left: 30px;
+}
+.select{
+  color: white;
+}

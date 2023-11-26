@@ -8,51 +8,15 @@ import axios from 'axios';
 })
 export class MovieApiServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  base_url = "https://api.themoviedb.org/3";
+  tmdb_base_url = "https://api.themoviedb.org/3";
   // apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
 
   baseurl = "http://localhost:8080/api/v1";
   apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
 
-  bannerApiData():Observable<any>{  //most popular movies watch in sri lanka
-
-    const payload = {
-        "airDateGte": null,
-        "airDateLte": null,
-        "certification": null,
-        "certificationCountry": "",
-        "debug": false,
-        "firstAirDateGte": null,
-        "firstAirDateLte": null,
-        "page": 1,
-        "primaryReleaseDateGte": null,
-        "primaryReleaseDateLte": null,
-        "region": "US",
-        "releaseDateGte": "",
-        "releaseDateLte": "",
-        "showMe": 0,
-        "sortBy": "popularity",
-        "voteAverageGte": 0.0,
-        "voteAverageLte": 10.0,
-        "voteCountGte": 0,
-        "watchRegion": "LK",
-        "withGenres": "",
-        "withKeywords": null,
-        "withNetworks": null,
-        "withOriginCountry": null,
-        "withOriginalLanguage": "en",
-        "withWatchMonetizationTypes": null,
-        "withWatchProviders": null,
-        "withReleaseType": "",
-        "withRuntimeGte": 0,
-        "withRuntimeLte": 400
-    };
-    return this.http.post(`${this.baseurl}/tmdb/movies`,payload);
-  }
-
-  trendingMovieApiData():Observable<any>{ //new release movies watch in sri lanka
+  bannerApiData(): Observable<any> {  //most popular movies watch in sri lanka
 
     const payload = {
       "airDateGte": null,
@@ -83,74 +47,122 @@ export class MovieApiServiceService {
       "withWatchProviders": null,
       "withReleaseType": "",
       "withRuntimeGte": 0,
-      "withRuntimeLte": 400
-  };
-  
-    return this.http.post(`${this.baseurl}/tmdb/movies`,payload);
+      "withRuntimeLte": 400
+    };
+    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
   }
 
-  upcomingMovieApiData():Observable<any>{ //new release movies watch in sri lanka
+  trendingMovieApiData(): Observable<any> { //new release movies watch in sri lanka
 
-  //   const payload = {
-  //     "airDateGte": null,
-  //     "airDateLte": null,
-  //     "certification": null,
-  //     "certificationCountry": "",
-  //     "debug": false,
-  //     "firstAirDateGte": null,
-  //     "firstAirDateLte": null,
-  //     "page": 1,
-  //     "primaryReleaseDateGte": null,
-  //     "primaryReleaseDateLte": null,
-  //     "region": "US",
-  //     "releaseDateGte": "",
-  //     "releaseDateLte": "",
-  //     "showMe": 0,
-  //     "sortBy": "popularity",
-  //     "voteAverageGte": 0.0,
-  //     "voteAverageLte": 10.0,
-  //     "voteCountGte": 0,
-  //     "watchRegion": "LK",
-  //     "withGenres": "",
-  //     "withKeywords": null,
-  //     "withNetworks": null,
-  //     "withOriginCountry": null,
-  //     "withOriginalLanguage": "en",
-  //     "withWatchMonetizationTypes": null,
-  //     "withWatchProviders": null,
-  //     "withReleaseType": "",
-  //     "withRuntimeGte": 0,
-  //     "withRuntimeLte": 400
-  // };
+    const payload = {
+      "airDateGte": null,
+      "airDateLte": null,
+      "certification": null,
+      "certificationCountry": "",
+      "debug": false,
+      "firstAirDateGte": null,
+      "firstAirDateLte": null,
+      "page": 1,
+      "primaryReleaseDateGte": null,
+      "primaryReleaseDateLte": null,
+      "region": "US",
+      "releaseDateGte": "",
+      "releaseDateLte": "",
+      "showMe": 0,
+      "sortBy": "popularity",
+      "voteAverageGte": 0.0,
+      "voteAverageLte": 10.0,
+      "voteCountGte": 0,
+      "watchRegion": "LK",
+      "withGenres": "",
+      "withKeywords": null,
+      "withNetworks": null,
+      "withOriginCountry": null,
+      "withOriginalLanguage": "en",
+      "withWatchMonetizationTypes": null,
+      "withWatchProviders": null,
+      "withReleaseType": "",
+      "withRuntimeGte": 0,
+      "withRuntimeLte": 400
+    };
 
-      // return this.http.post(`${this.baseurl}/tmdb/movies`,payload);
+    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
+  }
 
-  return this.http.get(`${this.base_url}/trending/movie/week?api_key=${this.apikey}`);
+  upcomingMovieApiData(): Observable<any> { //new release movies watch in sri lanka
+
+    //   const payload = {
+    //     "airDateGte": null,
+    //     "airDateLte": null,
+    //     "certification": null,
+    //     "certificationCountry": "",
+    //     "debug": false,
+    //     "firstAirDateGte": null,
+    //     "firstAirDateLte": null,
+    //     "page": 1,
+    //     "primaryReleaseDateGte": null,
+    //     "primaryReleaseDateLte": null,
+    //     "region": "US",
+    //     "releaseDateGte": "",
+    //     "releaseDateLte": "",
+    //     "showMe": 0,
+    //     "sortBy": "popularity",
+    //     "voteAverageGte": 0.0,
+    //     "voteAverageLte": 10.0,
+    //     "voteCountGte": 0,
+    //     "watchRegion": "LK",
+    //     "withGenres": "",
+    //     "withKeywords": null,
+    //     "withNetworks": null,
+    //     "withOriginCountry": null,
+    //     "withOriginalLanguage": "en",
+    //     "withWatchMonetizationTypes": null,
+    //     "withWatchProviders": null,
+    //     "withReleaseType": "",
+    //     "withRuntimeGte": 0,
+    //     "withRuntimeLte": 400
+    // };
+
+    // return this.http.post(`${this.baseurl}/tmdb/movies`,payload);
+
+    return this.http.get(`${this.tmdb_base_url}/trending/movie/week?api_key=${this.apikey}`);
 
   }
 
-  getSearchMovie(data:any):Observable<any>{
+  getSearchMovie(data: any): Observable<any> {
     // console.log(data,'movie#');
     return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
   }
 
-  getMovieDetails(data:any):Observable<any>{
+  getMovieDetails(data: any): Observable<any> {
     // console.log(data,'movie#');
     return this.http.get(`${this.baseurl}/tmdb/movie/${data}`);
   }
 
-  getMovieTrailer(data:any):Observable<any>{
-    // console.log(data,'movie#');s
-    return this.http.get(`${this.baseurl}/tmdb/movie/${data}/videos`);
+  getMovieTrailer(data: any, successCallback: Function, errorCallback: Function): Observable<any> {
+    return new Observable(observer => {
+      axios.get(`${this.baseurl}/tmdb/movie/${data}/videos`)
+        .then(res => {
+          successCallback(res)
+          observer.next(res.data);
+          observer.complete();
+        }).catch(e => {
+          errorCallback(e)
+        })
+    })
+
   }
 
-  getMovieCast(data:any):Observable<any>{
-    // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/movie/${data}/credits?api_key=${this.apikey}`);
-  }
-
-  getMovieCrew(data:any):Observable<any>{
-    // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/movie/${data}/credits?api_key=${this.apikey}`);
+  getMovieCredits(data: any, successCallback: Function, errorCallback: Function): Observable<any> {
+    return new Observable(observer => {
+      axios.get(`${this.baseurl}/tmdb/movie/${data}/credits`)
+        .then(res => {
+          successCallback(res)
+          observer.next(res.data);
+          observer.complete();
+        }).catch(e => {
+          errorCallback(e)
+        })
+    })
   }
 }

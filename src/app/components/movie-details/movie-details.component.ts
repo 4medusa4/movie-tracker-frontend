@@ -24,9 +24,9 @@ export class MovieDetailsComponent implements OnInit {
     let getParamId = this.router.snapshot.paramMap.get('id');
     console.log(getParamId, 'getparamid#');
     this.getMovie(getParamId);
-    this.getMovieTrailer(getParamId);
-    this.getMovieCast(getParamId);
-    this.getMovieCrew(getParamId);
+    this.getMovieTrailer(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
+    this.getMovieCast(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
+    this.getMovieCrew(getParamId, (resp: any) => { console.log(resp) }, (e: any) => { console.log(e) });
 
   }
 
@@ -37,9 +37,8 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  getMovieTrailer(id: any) {
-    this.service.getMovieTrailer(id).subscribe((result) => {
-      console.log(result, 'getmovietrailer#')
+  getMovieTrailer(id: any, successCallback: Function, errorCallback: Function) {
+    this.service.getMovieTrailer(id, successCallback, errorCallback).subscribe((result) => {
       result.results.forEach((element: any) => {
         if (element.type == "Trailer") {
           this.getMovieTrailerResult = element.key
@@ -48,16 +47,14 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  getMovieCast(id: any) {
-    this.service.getMovieCast(id).subscribe((result) => {
-      console.log(result, 'getmoviecast#')
+  getMovieCast(id: any, successCallback: Function, errorCallback: Function) {
+    this.service.getMovieCredits(id, successCallback, errorCallback).subscribe((result) => {
       this.getMovieCastResult = result.cast;
     });
   }
 
-  getMovieCrew(id: any) {
-    this.service.getMovieCrew(id).subscribe((result) => {
-      console.log(result, 'getmoviecrew#')
+  getMovieCrew(id: any, successCallback: Function, errorCallback: Function) {
+    this.service.getMovieCredits(id, successCallback, errorCallback).subscribe((result) => {
       this.getMovieCrewResult = result.crew;
     });
   }

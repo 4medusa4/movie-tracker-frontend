@@ -12,6 +12,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
+
+  theaterId: string = '';
+  bookingDate: string = '';
+  showTime: string = '';
+  numberOfSeats: string = '';
+  totalAmount: string = '';
+
+  onPayHandler = () => {
+
+  }
+
   @Input() dates: Date[] = [];
   @ViewChild('dateSelector', { static: false }) dateSelector?: ElementRef;
   @ViewChild(NgModel) ngModel!: NgModel;

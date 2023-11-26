@@ -136,12 +136,12 @@ export class MovieApiServiceService {
 
   getMovieDetails(data:any):Observable<any>{
     // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/movie/${data}?api_key=${this.apikey}`);
+    return this.http.get(`${this.baseurl}/tmdb/movie/${data}`);
   }
 
   getMovieTrailer(data:any):Observable<any>{
     // console.log(data,'movie#');s
-    return this.http.get(`${this.baseurl}/movie/${data}/videos?api_key=${this.apikey}`);
+    return this.http.get(`${this.baseurl}/tmdb/movie/${data}/videos`);
   }
 
   getMovieCast(data:any):Observable<any>{

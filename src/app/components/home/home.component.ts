@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit {
   bannerResult: any = []
   trendingMovieResult: any = []
   upcomingMovieResult: any = []
+  comingSoonMovieResult: any = []
 
   ngOnInit(): void {
     this.bannerData();
     this.trendingMovieData();
     this.upcomingMovieData();
+    this.comingSoonMovieData();
   }
 
   bannerData() {
@@ -28,6 +30,15 @@ export class HomeComponent implements OnInit {
       this.bannerResult = result.results;
     });
   }
+
+  onLanguageChange(event: any) {
+    const selectedLanguage = event.target.value;
+    this.service.updateLanguage(selectedLanguage);
+    // Perform actions based on the selected language, e.g., update content, make API calls, etc.
+    console.log('Selected Language:', selectedLanguage);
+    this.service.updateLanguage(selectedLanguage);
+    console.log('Selected Language in service:', this.service.getSelectedLanguage());
+}
 
   trendingMovieData() {
     this.service.trendingMovieApiData().subscribe((result) => {
@@ -40,6 +51,13 @@ export class HomeComponent implements OnInit {
     this.service.upcomingMovieApiData().subscribe((result) => {
       console.log(result, 'upcomingmovieresult#')
       this.upcomingMovieResult = result.results;
+    });
+  }
+
+  comingSoonMovieData() {
+    this.service.comingsoonMovieApiData().subscribe((result) => {
+      console.log(result, 'comingsoonmovieresult#')
+      this.comingSoonMovieResult = result.results;
     });
   }
 

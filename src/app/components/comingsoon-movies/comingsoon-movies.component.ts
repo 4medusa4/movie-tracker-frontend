@@ -4,23 +4,23 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-movie-upcoming',
-  templateUrl: './upcoming-movies.component.html',
-  styleUrls: ['./upcoming-movies.component.scss']
+  templateUrl: './comingsoon-movies.component.html',
+  styleUrls: ['./comingsoon-movies.component.scss']
 })
-export class UpcomingMoviesComponent implements OnInit {
+export class comingsoonMoviesComponent implements OnInit {
 
   constructor(private service: MovieApiServiceService, private router: Router) { }
 
-  upcomingMovieResult: any = []
+  comingsoonMovieResult: any = []
 
   ngOnInit(): void {
-    this.upcomingMovieData();
+    this.comingsoonMovieData();
   }
 
-  upcomingMovieData() {
-    this.service.upcomingMovieApiData().subscribe((result) => {
-      console.log(result, 'upcomingmovieresult#')
-      this.upcomingMovieResult = result.results;
+  comingsoonMovieData() {
+    this.service.comingsoonMovieApiData().subscribe((result) => {
+      console.log(result, 'comingsoonmovieresult#')
+      this.comingsoonMovieResult = result.results;
     });
   }
 }

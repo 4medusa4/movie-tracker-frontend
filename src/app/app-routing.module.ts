@@ -22,6 +22,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TrackingsComponent } from './components/trackings/trackings.component';
 import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
+import { comingsoonMoviesComponent } from './components/comingsoon-movies/comingsoon-movies.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path:'upcoming-movies', component:UpcomingMoviesComponent},
   {path:'upcoming-movie/:id', component:UpcomingMovieDetailsComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
+  {path:'comingsoon-movies', component:comingsoonMoviesComponent},
   {path:'**', component: HomeComponent}
 ];
 

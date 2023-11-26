@@ -2,7 +2,7 @@
     position: relative;
     margin: 0;
     padding: 0;
-    height: 900px;
+    height: 1000px;
     margin-bottom: -20px;
   }
   .image-container img {
@@ -94,6 +94,13 @@
     .forget  {
       text-align: right;
       color: #778beb;
+    }
+    .error  {
+      text-align: right;
+      color: #c72d42;
+      font-size: 10px;
+      margin-top: 1px;
+      margin-bottom: 0;
     }
   
     .btn-click {

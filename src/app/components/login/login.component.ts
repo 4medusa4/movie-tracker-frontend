@@ -13,11 +13,36 @@ export class LoginComponent {
   loginEmail: string = '';
   loginPassword: string = '';
 
+  emailError: string = '';
+  passwordError: string = '';
+  serverError: string = '';
+
   constructor(private authService: AuthService, private router: Router) { }
   onLoginHandler = () => {
+        // Reset error messages
+        this.emailError = '';
+        this.passwordError = '';
+        this.serverError = '';
+
+            // Validation checks
+    if (!this.loginEmail) {
+      this.emailError = 'Email is required';
+    }
+
+    if (!this.loginPassword) {
+      this.passwordError = 'Password is required';
+    }
+
+    // If any validation error exists, stop further processing
+    if (this.emailError || this.passwordError) {
+      return;
+    }
+
     const _data = {
       'email': this.loginEmail.trim().toLowerCase(),
       'password': this.loginPassword.trim()
+
+      
     }
     this.authService.newUserLogin(
       _data,
@@ -32,5 +57,6 @@ export class LoginComponent {
 
   onErrorHandler = (e: any) => {
     console.log(e)
+    this.serverError = 'Incorrect email or password';
   }
 }

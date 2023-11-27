@@ -13,10 +13,12 @@
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input [(ngModel)]="loginEmail" type="email" class="form-control" aria-describedby="emailHelp">
+            <div class="form-text2 error" *ngIf="emailError">{{ emailError }}</div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input [(ngModel)]="loginPassword" type="password" class="form-control" id="exampleInputPassword1">
+            <div class="form-text2 error" *ngIf="passwordError">{{ passwordError }}</div>
             <div id="emailHelp" class="form-text2 forget">
               <a href="forgot-password" class="link-underline-primary forget">Forgot your Password ?</a>
             </div>
@@ -26,6 +28,7 @@
           <div id="emailHelp" class="form-text text-center">Didn’t have an account yet ?
             <a href="signup" class="link-underline-primary"> Register Now</a>
           </div>
+          <div class="form-text2 errors" *ngIf="serverError">{{ serverError }}</div>
         </div>
       </fieldset>
     </div>

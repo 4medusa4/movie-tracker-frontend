@@ -25,6 +25,8 @@ export default class AuthService {
     return new Observable((observer) => {
       axios.post(url, _data)
         .then(res => {
+          const accessToken = res.data.access_token;
+          localStorage.setItem('access_token', accessToken);
           successCallback(res)
           observer.next(res.data);
           observer.complete();

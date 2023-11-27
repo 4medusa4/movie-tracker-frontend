@@ -257,8 +257,17 @@ export class BookingsComponent implements OnInit {
     }
   }
 
-  confirmBooking(): void {
-    console.log('Selected Seats:', this.selectedSeats);
+  handleUserBooking() {
+    const data = {
+      'seats': this.selectedSeats,
+      'date': this.selectedShowDate,
+      'location': this.selectedLocation,
+    }
+    this.service.userBooking(
+      data,
+      (resp: any) => console.log(resp),
+      (e: any) => console.log(e)
+    ).subscribe()
   }
 
   selectedLocation: string = 'Colombo'; // Initialize with an empty string

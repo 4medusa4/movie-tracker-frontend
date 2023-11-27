@@ -18,18 +18,18 @@ export class MovieApiServiceService {
 
   private selectedLanguage: string = 'en'; // Default language
 
-    // Method to update the selected language
+  // Method to update the selected language
   updateLanguage(language: string) {
-  console.log('Updating language to:', language);
-  this.selectedLanguage = language;
-  console.log('Selected language updated to:', this.selectedLanguage);
+    console.log('Updating language to:', language);
+    this.selectedLanguage = language;
+    console.log('Selected language updated to:', this.selectedLanguage);
 
   }
 
-    // Method to get the currently selected language
-    getSelectedLanguage(): string {
-      return this.selectedLanguage;
-    }
+  // Method to get the currently selected language
+  getSelectedLanguage(): string {
+    return this.selectedLanguage;
+  }
 
   bannerApiData(): Observable<any> {  //most popular movies watch in sri lanka
 
@@ -88,102 +88,102 @@ export class MovieApiServiceService {
           "includeAdult": false,
           "includeVideo": false,
           "airDateGte": null,
-      "airDateLte": null,
-      "certification": null,
-      "certificationCountry": "",
-      "debug": false,
-      "firstAirDateGte": null,
-      "firstAirDateLte": null,
-      "page": 1,
-      "primaryReleaseDateGte": null,
-      "primaryReleaseDateLte": null,
-      "region": "US",
-      "releaseDateGte": "",
-      "releaseDateLte": "",
-      "showMe": 0,
-      "sortBy": "popularity",
-      "voteAverageGte": 0.0,
-      "voteAverageLte": 10.0,
-      "voteCountGte": 0,
-      "watchRegion": "LK",
-      "withGenres": "",
-      "withKeywords": null,
-      "withNetworks": null,
-      "withOriginCountry": null,
-      "withOriginalLanguage": this.selectedLanguage,
-      "withWatchMonetizationTypes": null,
-      "withWatchProviders": null,
-      "withReleaseType": "",
-      "withRuntimeGte": 0,
-      "withRuntimeLte": 400
+          "airDateLte": null,
+          "certification": null,
+          "certificationCountry": "",
+          "debug": false,
+          "firstAirDateGte": null,
+          "firstAirDateLte": null,
+          "page": 1,
+          "primaryReleaseDateGte": null,
+          "primaryReleaseDateLte": null,
+          "region": "US",
+          "releaseDateGte": "",
+          "releaseDateLte": "",
+          "showMe": 0,
+          "sortBy": "popularity",
+          "voteAverageGte": 0.0,
+          "voteAverageLte": 10.0,
+          "voteCountGte": 0,
+          "watchRegion": "LK",
+          "withGenres": "",
+          "withKeywords": null,
+          "withNetworks": null,
+          "withOriginCountry": null,
+          "withOriginalLanguage": this.selectedLanguage,
+          "withWatchMonetizationTypes": null,
+          "withWatchProviders": null,
+          "withReleaseType": "",
+          "withRuntimeGte": 0,
+          "withRuntimeLte": 400
         };
         break;
       case 'upcoming':
         payload = {
           "includeAdult": false,
           "includeVideo": false,
-        "airDateLte": null,
-        "certification": null,
-        "certificationCountry": "",
-        "debug": false,
-        "firstAirDateGte": null,
-        "firstAirDateLte": null,
-        "page": 2,
-        "primaryReleaseDateGte": oneWeekLater.toISOString().split('T')[0],
-        "primaryReleaseDateLte": threeMonthsLater.toISOString().split('T')[0],
-        "region": "US",
-        "releaseDateGte": "",
-        "releaseDateLte": "",
-        "showMe": 0,
-        "sortBy": "popularity",
-        "voteAverageGte": 0.0,
-        "voteAverageLte": 10.0,
-        "voteCountGte": 0,
-        "watchRegion": "LK",
-        "withGenres": "",
-        "withKeywords": null,
-        "withNetworks": null,
-        "withOriginCountry": null,
-        "withOriginalLanguage": this.selectedLanguage,
-        "withWatchMonetizationTypes": null,
-        "withWatchProviders": null,
-        "withReleaseType": "",
-        "withRuntimeGte": 0,
-        "withRuntimeLte": 400
+          "airDateLte": null,
+          "certification": null,
+          "certificationCountry": "",
+          "debug": false,
+          "firstAirDateGte": null,
+          "firstAirDateLte": null,
+          "page": 2,
+          "primaryReleaseDateGte": oneWeekLater.toISOString().split('T')[0],
+          "primaryReleaseDateLte": threeMonthsLater.toISOString().split('T')[0],
+          "region": "US",
+          "releaseDateGte": "",
+          "releaseDateLte": "",
+          "showMe": 0,
+          "sortBy": "popularity",
+          "voteAverageGte": 0.0,
+          "voteAverageLte": 10.0,
+          "voteCountGte": 0,
+          "watchRegion": "LK",
+          "withGenres": "",
+          "withKeywords": null,
+          "withNetworks": null,
+          "withOriginCountry": null,
+          "withOriginalLanguage": this.selectedLanguage,
+          "withWatchMonetizationTypes": null,
+          "withWatchProviders": null,
+          "withReleaseType": "",
+          "withRuntimeGte": 0,
+          "withRuntimeLte": 400
         };
         break;
       case 'comingsoon':
         payload = {
           "includeAdult": false,
           "includeVideo": false,
-        "airDateLte": null,
-        "certification": null,
-        "certificationCountry": "",
-        "debug": false,
-        "firstAirDateGte": null,
-        "firstAirDateLte": null,
-        "page": 2,
-        "primaryReleaseDateGte": today.toISOString().split('T')[0],
-        "primaryReleaseDateLte": oneWeekLater.toISOString().split('T')[0],
-        "region": "US",
-        "releaseDateGte": "",
-        "releaseDateLte": "",
-        "showMe": 0,
-        "sortBy": "popularity",
-        "voteAverageGte": 0.0,
-        "voteAverageLte": 10.0,
-        "voteCountGte": 0,
-        "watchRegion": "LK",
-        "withGenres": "",
-        "withKeywords": null,
-        "withNetworks": null,
-        "withOriginCountry": null,
-        "withOriginalLanguage": this.selectedLanguage,
-        "withWatchMonetizationTypes": null,
-        "withWatchProviders": null,
-        "withReleaseType": "",
-        "withRuntimeGte": 0,
-        "withRuntimeLte": 400
+          "airDateLte": null,
+          "certification": null,
+          "certificationCountry": "",
+          "debug": false,
+          "firstAirDateGte": null,
+          "firstAirDateLte": null,
+          "page": 2,
+          "primaryReleaseDateGte": today.toISOString().split('T')[0],
+          "primaryReleaseDateLte": oneWeekLater.toISOString().split('T')[0],
+          "region": "US",
+          "releaseDateGte": "",
+          "releaseDateLte": "",
+          "showMe": 0,
+          "sortBy": "popularity",
+          "voteAverageGte": 0.0,
+          "voteAverageLte": 10.0,
+          "voteCountGte": 0,
+          "watchRegion": "LK",
+          "withGenres": "",
+          "withKeywords": null,
+          "withNetworks": null,
+          "withOriginCountry": null,
+          "withOriginalLanguage": this.selectedLanguage,
+          "withWatchMonetizationTypes": null,
+          "withWatchProviders": null,
+          "withReleaseType": "",
+          "withRuntimeGte": 0,
+          "withRuntimeLte": 400
         };
         break;
       default:
@@ -378,6 +378,24 @@ export class MovieApiServiceService {
         }).catch(e => {
           errorCallback(e)
         })
+    })
+  }
+
+  userBooking(data: any, successCallbac: any, errorCallback: any): Observable<any> {
+    console.log('called booking service method')
+    return new Observable(observe => {
+      axios.post(`${this.baseurl}/user/bookings`, data, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          'Access-Control-Allow-Origin': '*'
+        }
+      }).then(resp => {
+        successCallbac(resp)
+        observe.next(resp.data)
+        observe.complete();
+      })
+        .catch(e => errorCallback(e))
     })
   }
 }

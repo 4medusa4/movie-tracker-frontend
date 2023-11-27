@@ -183,7 +183,7 @@
     <div class="new-release-movies container mt-3 p-3">
         <div class="row">
             <h4 class="text-white">Now Showing</h4>
-            <a href="/new-release-movies">View All</a>        
+            <button class="btn-new" routerLink="/new-release-movies">View All</button>        
             <div class="rowposter">
                 <ng-container *ngFor="let t of trendingMovieResult">
                     <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',t.id]">

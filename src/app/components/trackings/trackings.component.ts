@@ -42,8 +42,8 @@ export class TrackingsComponent implements OnInit {
     private _router: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder,
-    private ngZone: NgZone,private authService: AuthService, private router: Router
-  ) {}
+    private ngZone: NgZone, private authService: AuthService, private router: Router
+  ) { }
 
   ngOnInit(): void {
     let getParamId = this._router.snapshot.paramMap.get('id');
@@ -104,7 +104,7 @@ export class TrackingsComponent implements OnInit {
   initializeSelectedDayParts(): boolean[] {
     return Array.from({ length: this.dayParts.length }, () => false);
   }
-  
+
   onDayPartChange(index: number) {
     this.selectedDayParts[index] = !this.selectedDayParts[index];
   }
@@ -161,25 +161,13 @@ export class TrackingsComponent implements OnInit {
     }
 
 
-  //   this.authService.newBooking(trackingData,
-  //     (response: any) => {
-  //       // Handle success
-  //       this.router.navigate(['/checkout'], {queryParams: { success: true}})
-  //       console.log('Booking successful:', response);
-  //     },
-  //     (error: any) => {
-  //       // Handle error
-  //       console.error('Error in booking:', error);
-  //     }
-  //   ).subscribe();
-  // }
 
     this.authService.newBooking(trackingData,
       (response: any) => {
 
-        if(this.autoBookPreference){
+        if (this.autoBookPreference) {
           // Navigate to UI when preference is checked
-          this.router.navigate(['/checkout'], {queryParams: { success: true}})
+          this.router.navigate(['/checkout'], { queryParams: { success: true } })
           console.log('Booking successful:', response);
         } else {
           // Navigate to UI when preference is not checked

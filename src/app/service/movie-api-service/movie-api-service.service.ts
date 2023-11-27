@@ -16,7 +16,7 @@ export class MovieApiServiceService {
   baseurl = "http://localhost:8080/api/v1";
   apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
 
-  private selectedLanguage: string = ''; // Default language
+  private selectedLanguage: string = 'en'; // Default language
 
   // Method to update the selected language
   updateLanguage(language: string) {
@@ -346,7 +346,7 @@ export class MovieApiServiceService {
 
   getSearchMovie(data: any): Observable<any> {
     // console.log(data,'movie#');
-    return this.http.get(`${this.tmdb_base_url}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
+    return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
   }
 
   getMovieDetails(data: any): Observable<any> {
@@ -384,11 +384,10 @@ export class MovieApiServiceService {
   userBooking(data: any, successCallbac: any, errorCallback: any): Observable<any> {
     console.log('called booking service method')
     return new Observable(observe => {
-      axios.post(`${this.baseurl}/bookings`, data, {
+      axios.post(`${this.baseurl}/tenant/bookings`, data, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbWVzaGFAZ21haWwuY29tIiwiaWF0IjoxNzAxMDU5MDc4LCJleHAiOjE3MDExNDU0Nzh9.Eah3kYtd_VmR4_V8kZQ_j2Xb9cDnWjRI20KR2abj5Nk`,
-          'Access-Control-Allow-Origin': 'http://localhost:8080/*'
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }
       }).then(resp => {
         successCallbac(resp)

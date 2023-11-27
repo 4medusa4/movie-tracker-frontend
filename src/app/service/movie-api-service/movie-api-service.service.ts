@@ -34,8 +34,6 @@ export class MovieApiServiceService {
   bannerApiData(): Observable<any> {  //most popular movies watch in sri lanka
 
     const payload = {
-      "includeAdult": false,
-      "includeVideo": false,
       "airDateGte": null,
       "airDateLte": null,
       "certification": null,
@@ -85,8 +83,6 @@ export class MovieApiServiceService {
     switch (apiType) {
       case 'trending':
         payload = {
-          "includeAdult": false,
-          "includeVideo": false,
           "airDateGte": null,
           "airDateLte": null,
           "certification": null,
@@ -120,8 +116,6 @@ export class MovieApiServiceService {
         break;
       case 'upcoming':
         payload = {
-          "includeAdult": false,
-          "includeVideo": false,
           "airDateLte": null,
           "certification": null,
           "certificationCountry": "",
@@ -154,8 +148,6 @@ export class MovieApiServiceService {
         break;
       case 'comingsoon':
         payload = {
-          "includeAdult": false,
-          "includeVideo": false,
           "airDateLte": null,
           "certification": null,
           "certificationCountry": "",

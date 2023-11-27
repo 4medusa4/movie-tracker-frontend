@@ -34,16 +34,4 @@ export default class AuthService {
     })
   }
 
-  newBooking(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
-    const url = `${this.BASE_URL}/bookings`
-    return new Observable((observer) => {
-      axios.post(url, _data)
-        .then(res => {
-          successCallback(res)
-          observer.next(res.data);
-          observer.complete();
-        }).catch(e => errorCallback(e))
-    })
-  }
-
 }

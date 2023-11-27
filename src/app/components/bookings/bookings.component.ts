@@ -263,6 +263,7 @@ export class BookingsComponent implements OnInit {
       'date': this.selectedShowDate,
       'location': this.selectedLocation,
     }
+
     this.service.userBooking(
       data,
       (resp: any) => console.log(resp),

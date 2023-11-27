@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
 @Component({
   selector: 'app-checkout',
@@ -6,7 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent {
-  selectedPaymentOption: string = 'payNow'; 
+
+  constructor(private service: MovieApiServiceService) { }
+
+  handleOnSubmit() {
+    console.log('checkout')
+  }
+  selectedPaymentOption: string = 'payNow';
   selectPaymentOption(option: string): void {
     this.selectedPaymentOption = option;
   }

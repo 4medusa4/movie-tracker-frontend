@@ -17,50 +17,59 @@
 <!-- Location dropdown -->
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
-          <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedLocation" (change)="onLocationChange()">
+          <select class="form-select select" aria-label="Default select example" [(ngModel)]="selectedLocation" (change)="onLocationChange()">
             <option value="One">One</option>
             <option value="Two">Two</option>
             <option value="Three">Three</option>
           </select>
         </div>
 <!--date-->
-        <div class="mb-3">
-          <label for="date" class="form-label">Select Date</label>
-            <div class="date-selector-container" (mousewheel)="onMouseWheel($event)">
-                <!-- Left arrow -->
-              <div class="arrow left-arrow" (click)="scrollContainer(-50)">&lt;</div>
-                <div class="date-selector" #dateSelector [style.transform]="'translateX(' + dateSelectorTransform + 'px)'">
-                  <div class="date" *ngFor="let date of dates; let i = index" (click)="selectDate(date)" [class.selected]="isDefaultToday(date)">
-                    <div>{{ date | date: 'MMM' }}</div>
-                    <div>{{ date | date: 'dd' }}</div>
-                    <div>{{ date | date: 'EEE' }}</div>
-                  </div>
-                </div>
-              
-                <!-- Right arrow -->
-              <div class="arrow right-arrow" (click)="scrollContainer(50)">&gt;</div>
-            </div> 
-          </div>
+<div class="mb-3">
+  <label for="dayOfWeek" class="form-label">Select Day of the Week</label>
+  <select id="dayOfWeek" [(ngModel)]="selectedDayOfWeek" class="form-select select">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
+  </select>
+</div>
+        
+<!-- Part of Day -->
+<div class="mb-3">
+  <label for="dayOfWeek" class="form-label">Select Part of the Day</label>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Morning
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Afternoon
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Evening
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Night
+    </label>
+  </div>
+  
+</div>
 
-<!--show time-->
 
-            <div class="mb-3">
-              <label for="date" class="form-label">Select Showtime</label>
-              <div class="time-selector-container">
-                <div class="time-selector" #timeSelector [style.transform]="'translateX(' + timeSelectorTransform + 'px)'">
-                  <div class="time-card" *ngFor="let time of times; let i = index" (click)="selectTime(time)" [class.selected]="selectedTime === time">
-                    <div class="card">
-                      <div class="card-body">
-                        {{ time }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <!--quantity-->
-
             <div class="mb-3">
               <label for="date" class="form-label">Ticket Quantity</label>
               <div class="ticket-container">
@@ -69,33 +78,27 @@
                 <button class="increment-button" (click)="incrementTickets()">+</button>
               </div>
             </div>
-            
-            <!--select seats-->
-            
+
+            <!--arrangement-->
             <div class="mb-3">
-              <label for="date" class="form-label">Select Seats</label>
-              <div class="seat-container-container">
-                <div *ngFor="let row of rows" class="seat-row">
-                  <div *ngFor="let seat of seats" class="seat" [ngClass]="getSeatClass(row, seat)" (click)="toggleSeat(row, seat)">
-                    {{ row + seat }}
-                  </div>
-                </div>
-                <button class="confirm-button" *ngIf="selectedSeats.length > 0" (click)="confirmBooking()">Confirm Booking</button>
+              <label for="date" class="form-label">Arrangement</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
+                  Front Rows
+                </label>
               </div>
-              
-              <div class="legend-container">
-                <div class="legend-card not-available">
-                  <div class="legend-color" style="background-color: #636e72;"></div>
-                  Not Available
-                </div>
-                <div class="legend-card selected">
-                  <div class="legend-color" style="background-color: #341f97;"></div>
-                  Selected
-                </div>
-                <div class="legend-card available">
-                  <div class="legend-color" style="background-color: #fff;"></div>
-                  Available
-                </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
+                  Middle Rows
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
+                  Back Rows
+                </label>
               </div>
             </div>
 
@@ -107,102 +110,26 @@
         <div class="col cols">
           <div class="p-3">
             <div class="mb-3">
-              <label for="date" class="form-label">Tickets Summary</label>
+              <label for="date" class="form-label">Add to Tracklist</label>
             </div>
             <div class="summary-container">
-              <div class="mb-3 form-card">
-                <div class="card-summery">
-                  <img src="https://image.tmdb.org/t/p/original/{{ getMovieResult.poster_path }}" class="card-img-summery" alt="Movie Image">
-                  <!-- <div class="card-body">
-                    <h6 class="movie-name">{{getMovieResult.original_title}}</h6>
-                  </div> -->
-                </div>
+             
+              <div class="form-check form-switch"><br>
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Automatically book tickets using my preferences.</label>
               </div>
+             
 
-              <div class="mb-3 row" >
-                <div class="col-6" style="text-align: left;">
-                  <h6>Location</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>{{ selectedLocation }}</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row" >
-                <div class="col-6" style="text-align: left;">
-                  <h6>Show Date</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>{{selectedDate }}</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row" >
-                <div class="col-6" style="text-align: left;">
-                  <h6>Show Time</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>{{selectedTime}}</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row" >
-                <div class="col-6" style="text-align: left;">
-                  <h6>Seat Price</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>1000 RS</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <div class="col-6" style="text-align: left;">
-                  <h6>Ticket Quantity</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>{{ ticketCount }}</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <div class="col-6" style="text-align: left;">
-                  <h6>Selected Seats</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <!-- Use ngFor to iterate through selectedSeats array -->
-                  <h6>
-                    <span *ngFor="let seat of selectedSeats; let last = last">
-                      {{ seat }}{{ !last ? ', ' : '' }}
-                    </span>
-                  </h6>
-                </div>
-              </div>
-              
-
-              <div class="mb-3 row" >
-                <div class="col-6" style="text-align: left;">
-                  <h6>Total Amount</h6>
-                </div>
-                <div class="col-6" style="text-align: right;">
-                  <h6>{{ calculateTotalAmount() }}RS</h6>
-                </div>
-              </div>
-
-              <div class="mb-3 row" >
-                <div class="col-7" >
-                  <p>Ticket For</p>
-                  <div class="mb-3 text-center"> 
-                    <label for="exampleFormControlInput1" class="form-label2">Full Name</label>
-                    <input type="email" class="form-control2" id="exampleFormControlInput1">
-                  </div>
-                  <div class="mb-3 text-center"> 
-                    <label for="exampleFormControlInput1" class="form-label2">Mobile/Email</label>
-                    <input type="email" class="form-control2" id="exampleFormControlInput1">
-                  </div>
-                  <button type="submit" class="btn btn-click" [routerLink]="['/checkout']">Buy</button>
-                </div>
-              </div>
             </div>
+            <div class="form-check check"><br>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+               I accept all the conditions.
+              </label>
+
+            </div>
+            <button type="submit" class="btn btn-click" (click)="onSubmit()">Add To Track List</button>
+
           </div>
         </div>
     </div>

@@ -161,31 +161,11 @@ export class TrackingsComponent implements OnInit {
     }
 
 
-    this.authService.newBooking(trackingData,
-      (response: any) => {
-        // Handle success
-        this.router.navigate(['/checkout'], {queryParams: { success: true}})
-        console.log('Booking successful:', response);
-      },
-      (error: any) => {
-        // Handle error
-        console.error('Error in booking:', error);
-      }
-    ).subscribe();
-  }
-
   //   this.authService.newBooking(trackingData,
   //     (response: any) => {
-
-  //       if(this.autoBookPreference){
-  //         // Navigate to UI when preference is checked
-  //         this.router.navigate(['/checkout'], {queryParams: { success: true}})
-  //         console.log('Booking successful:', response);
-  //       } else {
-  //         // Navigate to UI when preference is not checked
-  //         this.router.navigate(['/tracking-list']);
-  //       }
-
+  //       // Handle success
+  //       this.router.navigate(['/checkout'], {queryParams: { success: true}})
+  //       console.log('Booking successful:', response);
   //     },
   //     (error: any) => {
   //       // Handle error
@@ -193,5 +173,25 @@ export class TrackingsComponent implements OnInit {
   //     }
   //   ).subscribe();
   // }
+
+    this.authService.newBooking(trackingData,
+      (response: any) => {
+
+        if(this.autoBookPreference){
+          // Navigate to UI when preference is checked
+          this.router.navigate(['/checkout'], {queryParams: { success: true}})
+          console.log('Booking successful:', response);
+        } else {
+          // Navigate to UI when preference is not checked
+          this.router.navigate(['/tracking-list']);
+        }
+
+      },
+      (error: any) => {
+        // Handle error
+        console.error('Error in booking:', error);
+      }
+    ).subscribe();
+  }
 }
 

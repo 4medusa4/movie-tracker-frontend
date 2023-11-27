@@ -16,7 +16,7 @@ export class MovieApiServiceService {
   baseurl = "http://localhost:8080/api/v1";
   apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
 
-  private selectedLanguage: string = 'en'; // Default language
+  private selectedLanguage: string = ''; // Default language
 
   // Method to update the selected language
   updateLanguage(language: string) {
@@ -346,7 +346,7 @@ export class MovieApiServiceService {
 
   getSearchMovie(data: any): Observable<any> {
     // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
+    return this.http.get(`${this.tmdb_base_url}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
   }
 
   getMovieDetails(data: any): Observable<any> {

@@ -283,5 +283,16 @@ export class BookingsComponent implements OnInit {
     return this.ticketCount * this.pricePerTicket;
   }
 
-
+  handleUserBooking() {
+    console.log('Selected Seats:', this.selectedSeats); const data = {
+      'seats': this.selectedSeats,
+      'date': this.selectedShowDate,
+      'location': this.selectedLocation,
+    }
+    this.service.userBooking(
+      data,
+      (resp: any) => console.log(resp),
+      (e: any) => console.log(e)
+    ).subscribe()
+  }
 }

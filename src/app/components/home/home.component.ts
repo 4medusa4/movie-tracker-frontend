@@ -9,6 +9,7 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  selectedLanguage: string = ''
 
   constructor(private service: MovieApiServiceService, private router: Router) { }
 
@@ -37,7 +38,20 @@ export class HomeComponent implements OnInit {
     this.trendingMovieData();
     this.upcomingMovieData();
     this.comingSoonMovieData();
+    // this.router.navigate(['/new-release-movies', { language: selectedLanguage }]);
+    
+}
 
+onViewNewRelease(){
+      this.router.navigate(['/new-release-movies', { language: this.selectedLanguage }]);
+}
+
+onViewComingSoon(){
+  this.router.navigate(['/coming-soon-movies', { language: this.selectedLanguage }]);
+}
+
+onViewUpcoming(){
+  this.router.navigate(['/upcoming-movies', { language: this.selectedLanguage }]);
 }
 
   trendingMovieData() {
@@ -60,6 +74,7 @@ export class HomeComponent implements OnInit {
       this.comingSoonMovieResult = result.results;
     });
   }
+  
 
 
   faPlayCircle = faPlayCircle;

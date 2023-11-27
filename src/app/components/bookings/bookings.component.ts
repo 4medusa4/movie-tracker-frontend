@@ -284,10 +284,17 @@ export class BookingsComponent implements OnInit {
   }
 
   handleUserBooking() {
-    console.log('Selected Seats:', this.selectedSeats); const data = {
-      'seats': this.selectedSeats,
-      'date': this.selectedShowDate,
-      'location': this.selectedLocation,
+    console.log('Selected Seats:', this.selectedSeats);
+    // const data = {
+    //   'seats': this.selectedSeats,
+    //   'date': this.selectedShowDate,
+    //   'location': this.selectedLocation,
+    // }
+    const data = {
+      "seats": this.selectedSeats,
+      "date": this.selectedShowDate,
+      "location": "Regal-Dematagoda",
+      "showTime": "1030"
     }
     this.service.userBooking(
       data,

@@ -384,11 +384,11 @@ export class MovieApiServiceService {
   userBooking(data: any, successCallbac: any, errorCallback: any): Observable<any> {
     console.log('called booking service method')
     return new Observable(observe => {
-      axios.post(`${this.baseurl}/user/bookings`, data, {
+      axios.post(`${this.baseurl}/bookings`, data, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          'Access-Control-Allow-Origin': '*'
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbWVzaGFAZ21haWwuY29tIiwiaWF0IjoxNzAxMDU5MDc4LCJleHAiOjE3MDExNDU0Nzh9.Eah3kYtd_VmR4_V8kZQ_j2Xb9cDnWjRI20KR2abj5Nk`,
+          'Access-Control-Allow-Origin': 'http://localhost:8080/*'
         }
       }).then(resp => {
         successCallbac(resp)

@@ -4,7 +4,9 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { NgModel } from '@angular/forms';
 import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-bookings',
@@ -18,6 +20,7 @@ export class BookingsComponent implements OnInit {
   showTime: string = '';
   numberOfSeats: string = '';
   totalAmount: string = '';
+  expression: boolean = false;
 
   onPayHandler = () => {
 
@@ -38,7 +41,7 @@ export class BookingsComponent implements OnInit {
   selectedDate!: string;
   selectedTicketCount: string = '';
 
-  constructor(private service: MovieApiServiceService, private router: ActivatedRoute, private renderer: Renderer2, private cdr: ChangeDetectorRef) {
+  constructor(private service: MovieApiServiceService,  private toastr: ToastrService, private router: ActivatedRoute, private renderer: Renderer2, private cdr: ChangeDetectorRef, private route: Router) {
     this.generateDates();
     // this.scrollSubject.pipe(debounceTime(50)).subscribe(delta=>this.scrollContainer(delta));
   }
@@ -298,8 +301,18 @@ export class BookingsComponent implements OnInit {
     }
     this.service.userBooking(
       data,
-      (resp: any) => console.log(resp),
-      (e: any) => console.log(e)
-    ).subscribe()
+      (resp: any) => {
+        console.log(resp);
+        this.toastr.success('Booking successful', 'Success');
+        this.expression = true;
+        this.route.navigate(['/checkout']);
+      },
+      (e: any) => {
+        console.log(e);
+
+        // If there is an error, show an error message
+        this.toastr.error('Booking failed', 'Error');
+      }
+    ).subscribe();
   }
 }

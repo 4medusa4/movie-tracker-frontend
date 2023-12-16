@@ -1,16 +1,21 @@
 <!-- Main content container -->
 <div class="main-content d-flex justify-content-center align-items-center">
-  <div class="container px-4 ">
+  <div class="container px-4">
     <div class="row gx-5">
       <div class="col cols">
         <div class="p-3">
           <div class="mb-3">
             <label for="date" class="form-label">Movie</label>
             <div class="card-top">
-              <img src="https://image.tmdb.org/t/p/original/{{ getMovieResult.poster_path }}" class="card-img"
-                alt="Movie Image">
+              <img
+                src="https://image.tmdb.org/t/p/original/{{
+                  getMovieResult.poster_path
+                }}"
+                class="card-img"
+                alt="Movie Image"
+              />
               <div class="card-body">
-                <h6 class="movie-name">{{getMovieResult.original_title}}</h6>
+                <h6 class="movie-name">{{ getMovieResult.original_title }}</h6>
               </div>
             </div>
           </div>
@@ -18,17 +23,28 @@
           <!-- Location dropdown -->
           <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <select class="form-select select" aria-label="Default select example" [(ngModel)]="selectedLocation"
-              (change)="onLocationChange()">
-              <option value="One">One</option>
-              <option value="Two">Two</option>
-              <option value="Three">Three</option>
+            <select
+              class="form-select select"
+              aria-label="Default select example"
+              [(ngModel)]="selectedLocation"
+              (change)="onLocationChange()"
+            >
+              <option value="One">Regal Cinema - Dematagoda</option>
+              <option value="Two">Savoy Cinema - Wellawaththa</option>
+              <option value="Three">Amity Lite - Maharagama</option>
+              <option value="Four">Samantha - Dematagoda</option>
             </select>
           </div>
           <!--date-->
           <div class="mb-3">
-            <label for="dayOfWeek" class="form-label">Select Day of the Week</label>
-            <select id="dayOfWeek" [(ngModel)]="selectedDayOfWeek" class="form-select select">
+            <label for="dayOfWeek" class="form-label"
+              >Select Day of the Week</label
+            >
+            <select
+              id="dayOfWeek"
+              [(ngModel)]="selectedDayOfWeek"
+              class="form-select select"
+            >
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>
               <option value="Wednesday">Wednesday</option>
@@ -41,43 +57,66 @@
 
           <!-- Part of Day -->
           <div class="mb-3">
-            <label for="dayOfWeek" class="form-label">Select Part of the Day</label>
+            <label for="dayOfWeek" class="form-label"
+              >Select Part of the Day</label
+            >
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
               <label class="form-check-label" for="flexCheckDefault">
                 Morning
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
               <label class="form-check-label" for="flexCheckDefault">
                 Afternoon
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
               <label class="form-check-label" for="flexCheckDefault">
                 Evening
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
               <label class="form-check-label" for="flexCheckDefault">
                 Night
               </label>
             </div>
-
           </div>
-
-
 
           <!--quantity-->
           <div class="mb-3">
             <label for="date" class="form-label">Ticket Quantity</label>
             <div class="ticket-container">
-              <button class="decrement-button" (click)="decrementTickets()">-</button>
+              <button class="decrement-button" (click)="decrementTickets()">
+                -
+              </button>
               <span class="ticket-count">{{ ticketCount }} Tickets</span>
-              <button class="increment-button" (click)="incrementTickets()">+</button>
+              <button class="increment-button" (click)="incrementTickets()">
+                +
+              </button>
             </div>
           </div>
 
@@ -85,25 +124,42 @@
           <div class="mb-3">
             <label for="date" class="form-label">Arrangement</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios1"
+                value="option1"
+              />
               <label class="form-check-label" for="exampleRadios1">
                 Front Rows
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios1"
+                value="option1"
+              />
               <label class="form-check-label" for="exampleRadios1">
                 Middle Rows
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios1"
+                value="option1"
+              />
               <label class="form-check-label" for="exampleRadios1">
                 Back Rows
               </label>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -115,24 +171,35 @@
             <label for="date" class="form-label">Add to Tracklist</label>
           </div>
           <div class="summary-container">
-
-            <div class="form-check form-switch"><br>
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              <label class="form-check-label" for="flexSwitchCheckDefault">Automatically book tickets using my
-                preferences.</label>
+            <div class="form-check form-switch">
+              <br />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault"
+                >Automatically book tickets using my preferences.</label
+              >
             </div>
-
-
           </div>
-          <div class="form-check check"><br>
-            <input class="form-check-input" type="checkbox" [(ngModel)]="autoBookPreference" value=""
-              id="flexCheckDefault">
+          <div class="form-check check">
+            <br />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="autoBookPreference"
+              value=""
+              id="flexCheckDefault"
+            />
             <label class="form-check-label" for="flexCheckDefault">
               I accept all the conditions.
             </label>
-
           </div>
-          <button type="submit" class="btn btn-click" (click)="onSubmit()">Add To Track List</button>
+          <button type="submit" class="btn btn-click" (click)="onSubmit()">
+            Add To Track List
+          </button>
         </div>
       </div>
     </div>

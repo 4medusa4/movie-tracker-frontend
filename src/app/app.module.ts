@@ -37,6 +37,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UpcomingMovieDetailsComponent } from './components/upcoming-movie-details/upcoming-movie-details.component';
 import AuthService from './service/auth-service/auth-service.service';
 import { comingsoonMoviesComponent } from './components/comingsoon-movies/comingsoon-movies.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,10 @@ import { comingsoonMoviesComponent } from './components/comingsoon-movies/coming
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [MovieApiServiceService, AuthService],
   bootstrap: [AppComponent]

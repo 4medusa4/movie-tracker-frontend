@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgZone } from '@angular/core';
 import axios from 'axios';
-import AuthService from 'src/app/service/auth-service/auth-service.service';
 @Component({
   selector: 'app-trackings',
   templateUrl: './trackings.component.html',
@@ -42,7 +41,8 @@ export class TrackingsComponent implements OnInit {
     private _router: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder,
-    private ngZone: NgZone, private authService: AuthService, private router: Router
+    private ngZone: NgZone,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -160,15 +160,11 @@ export class TrackingsComponent implements OnInit {
       totalAmount: this.calculateTotalAmount()
     }
 
-
-
-    this.authService.newBooking(trackingData,
+    this.service.addToTrackList(trackingData,
       (response: any) => {
-
         if (this.autoBookPreference) {
           // Navigate to UI when preference is checked
           this.router.navigate(['/checkout'], { queryParams: { success: true } })
-          console.log('Booking successful:', response);
         } else {
           // Navigate to UI when preference is not checked
           this.router.navigate(['/tracking-list']);

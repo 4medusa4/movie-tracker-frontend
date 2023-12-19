@@ -9,13 +9,14 @@
             <div class="card-top">
               <img
                 src="https://image.tmdb.org/t/p/original/{{
-                  getMovieResult.poster_path
+                  getMovieResult?.poster_path
                 }}"
+                *ngIf="getMovieResult?.poster_path"
                 class="card-img"
                 alt="Movie Image"
               />
               <div class="card-body">
-                <h6 class="movie-name">{{ getMovieResult.original_title }}</h6>
+                <h6 class="movie-name">{{ getMovieResult?.original_title }}</h6>
               </div>
             </div>
           </div>

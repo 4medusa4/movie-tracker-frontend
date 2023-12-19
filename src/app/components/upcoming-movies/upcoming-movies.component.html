@@ -5,18 +5,19 @@
       <ng-container *ngFor="let u of upcomingMovieResult">
         <div class="card mb-5">
           <img
-            src="https://image.tmdb.org/t/p/original/{{ u.poster_path }}"
+            src="https://image.tmdb.org/t/p/original/{{ u?.poster_path }}"
+            *ngIf="u?.poster_path"
             class="rowimg largeposter"
             alt="..."
-            [routerLink]="['/movie', u.id]"
+            [routerLink]="['/movie', u?.id]"
           />
           <div class="card-body">
-            <h6>{{ u.original_title }}</h6>
+            <h6>{{ u?.original_title }}</h6>
           </div>
         </div>
         <!-- <div class="card">
-                    <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',t.id]">
-                <h6>{{t.original_title}}</h6>    
+                    <img src="https://image.tmdb.org/t/p/original/{{ t?.poster_path }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie',t?.id]">
+                <h6>{{t?.original_title}}</h6>    
                 </div> -->
       </ng-container>
     </div>

@@ -1,66 +1,96 @@
 <!-- <div class="poster">
     <div class="row p-5">
         <div class="col-lg-2">
-            <img class="movie-details" src="https://image.tmdb.org/t/p/original/{{ getMovieresult.poster_path }}">
+            <img class="movie-details" src="https://image.tmdb.org/t/p/original/{{ getMovieresult?.poster_path }}">
 
         </div>
     </div>
 </div> -->
 
 <div class="card">
-    <img src="https://image.tmdb.org/t/p/original/{{ getMovieResult.poster_path }}" class="card-img-top" alt="...">
-        <div class="card-img-overlay row p-5">
-            <div class="col-lg-2">
-                <!-- <img src="https://image.tmdb.org/t/p/original/{{ getMovieresult.poster_path }}" class="movie-img" alt="..."> -->
-                <img class="movie-img" src="https://image.tmdb.org/t/p/original/{{ getMovieResult.poster_path }}">
-            </div>
-            <div class="col-lg-10 mt-5">
-                <h1 class="movie-name">{{getMovieResult.original_title}}</h1>
-                <ul class="horizontal-list">
-                    <li *ngFor="let g of getMovieResult.genres">
-                        <h6 class="movie-genres">{{g.name}}</h6>
-                    </li>
-                </ul>
-                <div>
-                    <a  id="btn-trailer" href="https://www.themoviedb.org/video/play?key={{getMovieTrailerResult}}" target="_blank"><button class="movie-btn"> Watch Trailer</button></a>
-                </div>
-                <div>
-                    <button class="movie-btn" id="btn-book-ticket" [routerLink]="['/bookings', getMovieResult.id]">Book Tickets</button>
-                </div>
-            </div>
+  <img
+    src="https://image.tmdb.org/t/p/original/{{ getMovieResult?.poster_path }}"
+    *ngIf="getMovieResult?.poster_path"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-img-overlay row p-5">
+    <div class="col-lg-2">
+      <!-- <img src="https://image.tmdb.org/t/p/original/{{ getMovieresult?.poster_path }}" class="movie-img" alt="..."> -->
+      <img
+        class="movie-img"
+        src="https://image.tmdb.org/t/p/original/{{
+          getMovieResult?.poster_path
+        }}"
+        *ngIf="getMovieResult?.poster_path"
+      />
     </div>
+    <div class="col-lg-10 mt-5">
+      <h1 class="movie-name">{{ getMovieResult?.original_title }}</h1>
+      <ul class="horizontal-list">
+        <li *ngFor="let g of getMovieResult?.genres">
+          <h6 class="movie-genres">{{ g.name }}</h6>
+        </li>
+      </ul>
+      <div>
+        <a
+          id="btn-trailer"
+          href="https://www.themoviedb.org/video/play?key={{
+            getMovieTrailerResult
+          }}"
+          target="_blank"
+          ><button class="movie-btn">Watch Trailer</button></a
+        >
+      </div>
+      <div>
+        <button
+          class="movie-btn"
+          id="btn-book-ticket"
+          [routerLink]="['/bookings', getMovieResult?.id]"
+        >
+          Book Tickets
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row mt-5 p-4 movie-details">
-    <div class="mt-4 mb-2">
-        <h5 class="topic">Overview</h5>
-        <div>
-            <h6>{{getMovieResult.overview}}</h6>
-        </div>
+  <div class="mt-4 mb-2">
+    <h5 class="topic">Overview</h5>
+    <div>
+      <h6>{{ getMovieResult?.overview }}</h6>
     </div>
-    <div class="mt-5 mb-3">
-        <h5 class="topic">Cast</h5>
-            <div class="rowposter">
-                <ng-container *ngFor="let c of getMovieCastResult">
-                    <div class="cast-container">
-                        <img class="cast-img rowimg" src="https://image.tmdb.org/t/p/original/{{ c.profile_path }}">
-                        <h6>{{c.original_name}}</h6>
-                    </div>
-                </ng-container> 
-            </div>
+  </div>
+  <div class="mt-5 mb-3">
+    <h5 class="topic">Cast</h5>
+    <div class="rowposter">
+      <ng-container *ngFor="let c of getMovieCastResult">
+        <div class="cast-container">
+          <img
+            class="cast-img rowimg"
+            src="https://image.tmdb.org/t/p/original/{{ c.profile_path }}"
+            *ngIf="c.profile_path"
+          />
+          <h6>{{ c.original_name }}</h6>
         </div>
- 
-    <div class="mt-5 mb-4">
-        <h5 class="topic">Crew</h5>
-        <div class="rowposter">
-            <ng-container *ngFor="let cr of getMovieCrewResult">
-                <div class="cast-container">
-                    <img class="cast-img rowimg" src="https://image.tmdb.org/t/p/original/{{ cr.profile_path }}">
-                    <h6>{{cr.original_name}}</h6>
-                </div>
-            </ng-container> 
-        </div>
+      </ng-container>
     </div>
-</div>
+  </div>
 
-     
+  <div class="mt-5 mb-4">
+    <h5 class="topic">Crew</h5>
+    <div class="rowposter">
+      <ng-container *ngFor="let cr of getMovieCrewResult">
+        <div class="cast-container">
+          <img
+            class="cast-img rowimg"
+            src="https://image.tmdb.org/t/p/original/{{ cr.profile_path }}"
+            *ngIf="cr.profile_path"
+          />
+          <h6>{{ cr.original_name }}</h6>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

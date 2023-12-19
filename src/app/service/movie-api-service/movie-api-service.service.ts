@@ -251,7 +251,6 @@ export class MovieApiServiceService {
           errorCallback(e)
         })
     })
-
   }
 
   getMovieCredits(data: any, successCallback: Function, errorCallback: Function): Observable<any> {

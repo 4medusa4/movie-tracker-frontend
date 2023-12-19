@@ -15,10 +15,14 @@ export default class AuthService {
   });
 
   constructor() {
+    this.isAuthenticatedSubject.next(!!sessionStorage.getItem('access_token'));
     this.axiosInstance.interceptors.request.use((config) => {
-      const token = localStorage.getItem('access_token');
+      const token = sessionStorage.getItem('access_token');
       if (token) {
         config.headers['Authorization'] = `Bearer ${token}`;
+        this.isAuthenticatedSubject.next(true);
+      } else {
+        this.isAuthenticatedSubject.next(false);
       }
       return config;
     }, (error) => {
@@ -47,7 +51,7 @@ export default class AuthService {
       axios.post(url, _data)
         .then(res => {
           const accessToken = res.data.access_token;
-          localStorage.setItem('access_token', accessToken);
+          sessionStorage.setItem('access_token', accessToken);
           successCallback(res);
           this.isAuthenticatedSubject.next(true); // Set login status to true
           observer.next(res.data);
@@ -65,7 +69,7 @@ export default class AuthService {
     return new Observable((observer) => {
       this.axiosInstance.post(url).
         then(res => {
-          localStorage.removeItem('access_token');
+          sessionStorage.removeItem('access_token');
           this.isAuthenticatedSubject.next(false); // Set login status to false
           observer.next(res.data);
           observer.complete();

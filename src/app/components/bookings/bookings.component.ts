@@ -1,11 +1,8 @@
-import { Component, Input, ElementRef, Renderer2, ViewChild, HostListener, OnInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
 
 @Component({
@@ -41,7 +38,7 @@ export class BookingsComponent implements OnInit {
   selectedDate!: string;
   selectedTicketCount: string = '';
 
-  constructor(private service: MovieApiServiceService,  private toastr: ToastrService, private router: ActivatedRoute, private renderer: Renderer2, private cdr: ChangeDetectorRef, private route: Router) {
+  constructor(private service: MovieApiServiceService, private toastr: ToastrService, private router: ActivatedRoute, private renderer: Renderer2, private cdr: ChangeDetectorRef, private route: Router) {
     this.generateDates();
     // this.scrollSubject.pipe(debounceTime(50)).subscribe(delta=>this.scrollContainer(delta));
   }
@@ -256,7 +253,6 @@ export class BookingsComponent implements OnInit {
     } else if (true) {
       return 'not-available';
     } else {
-      return '';
     }
   }
 

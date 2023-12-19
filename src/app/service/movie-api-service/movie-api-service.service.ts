@@ -1,23 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import axios from 'axios';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieApiServiceService {
 
-  constructor(private http: HttpClient) { }
-
-  tmdb_base_url = "https://api.themoviedb.org/3";
-
-  baseurl = "http://localhost:8080/api/v1";
-  apikey = "d3084da6f3cd42ca9f3a122b1d6d146a";
+  TMDB_BASE_URL = environment.TMDB_BASE_URL
+  BASE_URL = environment.BASE_URL
+  API_KEY = environment.TMDB_API_KEY
 
   private selectedLanguage: string = 'en'; // Default language
 
-  // Method to update the selected language
+  private axiosInstance = axios.create({
+    baseURL: this.BASE_URL
+  });
+
+  constructor(private http: HttpClient) {
+    this.axiosInstance.interceptors.request.use((config) => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    }, (error) => {
+      return Promise.reject(error);
+    });
+  }
+
   updateLanguage(language: string) {
     console.log('Updating language to:', language);
     this.selectedLanguage = language;
@@ -25,7 +38,6 @@ export class MovieApiServiceService {
 
   }
 
-  // Method to get the currently selected language
   getSelectedLanguage(): string {
     return this.selectedLanguage;
   }
@@ -65,7 +77,7 @@ export class MovieApiServiceService {
       "withRuntimeGte": 0,
       "withRuntimeLte": 400
     };
-    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
+    return this.http.post(`${this.BASE_URL}/tmdb/movies`, payload);
   }
 
 
@@ -203,34 +215,34 @@ export class MovieApiServiceService {
   // API method to get trending movies
   trendingMovieApiData(): Observable<any> {
     const payload = this.getPayloadWithLanguage('trending');
-    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
+    return this.http.post(`${this.BASE_URL}/tmdb/movies`, payload);
   }
 
   // API method to get upcoming movies
   upcomingMovieApiData(): Observable<any> {
     const payload = this.getPayloadWithLanguage('upcoming');
-    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
+    return this.http.post(`${this.BASE_URL}/tmdb/movies`, payload);
   }
 
   // API method to get coming soon movies
   comingsoonMovieApiData(): Observable<any> {
     const payload = this.getPayloadWithLanguage('comingsoon');
-    return this.http.post(`${this.baseurl}/tmdb/movies`, payload);
+    return this.http.post(`${this.BASE_URL}/tmdb/movies`, payload);
   }
 
   getSearchMovie(data: any): Observable<any> {
     // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/search/movie?api_key=${this.apikey}&query=${data.movieName}`);
+    return this.http.get(`${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${data.movieName}`);
   }
 
   getMovieDetails(data: any): Observable<any> {
     // console.log(data,'movie#');
-    return this.http.get(`${this.baseurl}/tmdb/movie/${data}`);
+    return this.http.get(`${this.BASE_URL}/tmdb/movie/${data}`);
   }
 
   getMovieTrailer(data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     return new Observable(observer => {
-      axios.get(`${this.baseurl}/tmdb/movie/${data}/videos`)
+      axios.get(`${this.BASE_URL}/tmdb/movie/${data}/videos`)
         .then(res => {
           successCallback(res)
           observer.next(res.data);
@@ -244,7 +256,7 @@ export class MovieApiServiceService {
 
   getMovieCredits(data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     return new Observable(observer => {
-      axios.get(`${this.baseurl}/tmdb/movie/${data}/credits`)
+      axios.get(`${this.BASE_URL}/tmdb/movie/${data}/credits`)
         .then(res => {
           successCallback(res)
           observer.next(res.data);
@@ -255,26 +267,21 @@ export class MovieApiServiceService {
     })
   }
 
-  userBooking(data: any, successCallbac: any, errorCallback: any): Observable<any> {
-    console.log('called booking service method')
+  userBooking(_data: any, successCallbac: any, errorCallback: any): Observable<any> {
     return new Observable(observe => {
-      axios.post(`${this.baseurl}/tenant/bookings`, data, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`
-        }
-      }).then(resp => {
-        successCallbac(resp)
-        observe.next(resp.data)
-        observe.complete();
-      })
-        .catch(e => errorCallback(e))
+      const url = `/tenant/upcomming/booking`
+      this.axiosInstance.post(url, _data)
+        .then(res => {
+          successCallbac(res)
+          observe.next(res.data);
+          observe.complete();
+        }).catch(e => errorCallback(e))
     })
   }
 
   addToTrackList(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     return new Observable((observer) => {
-      axios.post(`${this.baseurl}/track-list`, _data, {
+      axios.post(`${this.BASE_URL}/track-list`, _data, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('access_token')}`

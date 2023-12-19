@@ -66,16 +66,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           
               "options": {
-                  "browserTarget": "movie-tracker-frontend:build",
-                  "proxyConfig": "proxy.conf.js"
+                "proxyConfig": "proxy.conf.js",
+                  "buildTarget": "movie-tracker-frontend:build"
               },
                     
           "configurations": {
             "production": {
-              "browserTarget": "movie-tracker-frontend:build:production"
+              "buildTarget": "movie-tracker-frontend:build:production"
             },
             "development": {
-              "browserTarget": "movie-tracker-frontend:build:development"
+              "buildTarget": "movie-tracker-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "movie-tracker-frontend:build"
+            "buildTarget": "movie-tracker-frontend:build"
           }
         },
         "test": {

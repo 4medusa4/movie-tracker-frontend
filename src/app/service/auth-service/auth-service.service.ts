@@ -1,17 +1,30 @@
 import axios from 'axios';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 export default class AuthService {
 
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private BASE_URL: string = environment.BASE_URL;
 
-  // Expose isLoggedIn as an observable
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+  private isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isAuthenticatedSubject$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 
-  constructor() { }
+  private axiosInstance = axios.create({
+    baseURL: this.BASE_URL
+  });
 
-  private BASE_URL: string = "http://localhost:8080/api/v1";
+  constructor() {
+    this.axiosInstance.interceptors.request.use((config) => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    }, (error) => {
+      return Promise.reject(error);
+    });
+  }
 
   newUserSignUp(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     const url = `${this.BASE_URL}/auth/register`
@@ -23,6 +36,7 @@ export default class AuthService {
           observer.complete();
         }).catch(e => {
           errorCallback(e)
+          observer.error(e);
         });
     })
   }
@@ -35,13 +49,29 @@ export default class AuthService {
           const accessToken = res.data.access_token;
           localStorage.setItem('access_token', accessToken);
           successCallback(res);
-          this.isLoggedInSubject.next(true); // Set login status to true
+          this.isAuthenticatedSubject.next(true); // Set login status to true
           observer.next(res.data);
           observer.complete();
         }).catch(e => {
-          this.isLoggedInSubject.next(false); // Set login status to false in case of an error
+          this.isAuthenticatedSubject.next(false); // Set login status to false in case of an error
           errorCallback(e)
+          observer.error(e);
         });
     })
+  }
+
+  logout(): Observable<any> {
+    const url = `/user/logout`;
+    return new Observable((observer) => {
+      this.axiosInstance.post(url).
+        then(res => {
+          localStorage.removeItem('access_token');
+          this.isAuthenticatedSubject.next(false); // Set login status to false
+          observer.next(res.data);
+          observer.complete();
+        }).catch(e => {
+          observer.error(e);
+        });
+    });
   }
 }

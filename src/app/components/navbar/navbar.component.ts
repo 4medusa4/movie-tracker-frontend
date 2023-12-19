@@ -14,6 +14,7 @@ export class NavbarComponent {
     this.isLoggedIn$ = this.authService.isAuthenticatedSubject$;
   }
 
+
   handleSignOut() {
     this.authService.logout().subscribe((res: any) => {
       this.router.navigate(['/login']);

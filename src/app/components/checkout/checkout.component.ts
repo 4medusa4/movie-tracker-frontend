@@ -9,8 +9,12 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-
 export class CheckoutComponent {
   constructor(private service: MovieApiServiceService) { }
 
-  handleOnSubmit() {
-    console.log('checkout')
+  handleOnSubmitPayNow = () => {
+    console.log('Pay now clicked')
+  }
+
+  handleOnSubmitPayLater = () => {
+    console.log('pay later clicked')
   }
 
   selectedPaymentOption: string = 'payNow';

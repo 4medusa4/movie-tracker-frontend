@@ -1,61 +1,106 @@
-    <div class="image-container">
-        <!-- <img src="assets/bg.png" alt="bg.png" class="d-block w-100"> -->
-    <div class="form-container">
-
-        <div class="payment-buttons">
-            <button 
-              class="payment-button" 
-              [ngClass]="{'selected': selectedPaymentOption === 'payNow'}"
-              (click)="selectPaymentOption('payNow')"
-            >
-              Pay Now
-            </button>
-            <button 
-              class="payment-button" 
-              [ngClass]="{'selected': selectedPaymentOption === 'payLater'}"
-              (click)="selectPaymentOption('payLater')"
-            >
-              Pay Later
-            </button>
-          </div>
-      <!-- Form for Pay Now -->
-      <div *ngIf="selectedPaymentOption === 'payNow'">
-        <form class="row g-3">
-          <div class="col-md-12">
-            <input type="text" class="form-control" id="input" placeholder="Enter Card Number">
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="input" placeholder="MM/YY">
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="input" placeholder="CVV">
-          </div>
-          <div class="col-md-12">
-            <input type="text" class="form-control" id="input" placeholder="Card Holder Name">
-          </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Pay</button>
-          </div>
-        </form>
-      </div>
-  
-      <!-- Form for Pay Later -->
-      <div *ngIf="selectedPaymentOption === 'payLater'">
-        <form class="row g-3">
-          <div class="col-md-12">
-            <input type="text" class="form-control" id="input" placeholder="Name">
-          </div>
-          <div class="col-md-12">
-            <input type="text" class="form-control" id="input" placeholder="NIC">
-          </div>
-          <div class="col-md-12">
-            <input type="text" class="form-control" id="input" placeholder="E-mail">
-          </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
+<div class="image-container">
+  <!-- <img src="assets/bg.png" alt="bg.png" class="d-block w-100"> -->
+  <div class="form-container">
+    <div class="payment-buttons">
+      <button
+        class="payment-button"
+        [ngClass]="{ selected: selectedPaymentOption === 'payNow' }"
+        (click)="selectPaymentOption('payNow')"
+      >
+        Pay Now
+      </button>
+      <button
+        class="payment-button"
+        [ngClass]="{ selected: selectedPaymentOption === 'payLater' }"
+        (click)="selectPaymentOption('payLater')"
+      >
+        Pay Later
+      </button>
     </div>
+    <!-- Form for Pay Now -->
+    <div *ngIf="selectedPaymentOption === 'payNow'">
+      <form class="row g-3">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="Enter Card Number"
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="MM/YY"
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="CVV"
+          />
+        </div>
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="Card Holder Name"
+          />
+        </div>
+        <div class="col-12">
+          <button
+            type="submit"
+            (onsubmit)="handleOnSubmitPayNow()"
+            class="btn btn-primary"
+          >
+            Pay
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Form for Pay Later -->
+    <div *ngIf="selectedPaymentOption === 'payLater'">
+      <form class="row g-3">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="Name"
+          />
+        </div>
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="NIC"
+          />
+        </div>
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="E-mail"
+          />
+        </div>
+        <div class="col-12">
+          <button
+            type="submit"
+            (onsubmit)="handleOnSubmitPayLater()"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-  

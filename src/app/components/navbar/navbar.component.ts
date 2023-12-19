@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import AuthService from 'src/app/service/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,22 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  faHome = faHome;
-  faSearch=faSearch;
+  isLoggedIn$: Observable<boolean>;
+  constructor(private router: Router, private authService: AuthService) {
+    this.isLoggedIn$ = this.authService.isAuthenticatedSubject$;
+  }
+
+  handleSignOut() {
+    this.authService.logout().subscribe((res: any) => {
+      this.router.navigate(['/login']);
+    });
+  }
+
+  gotoSignUp() {
+    this.router.navigate(['/signup']);
+  }
+
+  gotoSignIn() {
+    this.router.navigate(['/login']);
+  }
 }

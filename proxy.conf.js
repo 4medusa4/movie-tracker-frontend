@@ -23,4 +23,3 @@ const PROXY_CONF = [
 ];
 
 module.exports = PROXY_CONF;
-        

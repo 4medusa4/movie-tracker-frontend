@@ -1,7 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
-import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-movie-upcoming',
   templateUrl: './upcoming-movies.component.html',

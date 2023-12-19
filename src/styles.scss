@@ -1,15 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
-*{
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #030b11;
-    // background-color: #ffffff;
-    color: #f6f6f6;
+.btn-bd-primary {
+  --bd-green-bg: #0059ff;
+  --bd-green-rgb: 30, 215, 96;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-green-bg);
+  --bs-btn-border-color: var(--bd-green-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #0155f0;
+  --bs-btn-hover-border-color: #0155f0;
+  --bs-btn-focus-shadow-rgb: var(--bd-green-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #0d62ff;
+  --bs-btn-active-border-color: #0d62ff;
+}
+
+.btn-bd-outline-secondary {
+  --bd-green-bg: #0059ff;
+  --bd-green-rgb: 30, 215, 96;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bd-green-bg);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--bd-green-bg);
+  --bs-btn-hover-color: #0155f0;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: var(--bd-green-bg);
+  --bs-btn-focus-shadow-rgb: var(--bd-green-rgb);
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: #0d62ff;
+  --bs-btn-active-border-color: #0d62ff;
 }

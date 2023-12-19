@@ -7,15 +7,12 @@
 }
 
 .form-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  justify-content: center;
-  background-color: #2D3436;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 
   form {
     display: flex;
@@ -30,7 +27,7 @@
   fieldset {
     width: 100%;
     max-width: 400px;
-    border:none;
+    border: none;
     border-radius: 8px;
     padding: 30px;
     margin: 0 auto;
@@ -59,7 +56,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #ccc;
-    color: #636E72;
+    color: #636e72;
     width: 300px;
     margin-bottom: 15px;
   }
@@ -68,20 +65,20 @@
     width: 100%;
     text-align: left;
     margin-bottom: 5px;
-    color: #636E72;
+    color: #636e72;
   }
 
-   .register {
+  .register {
     text-align: center;
     color: #778beb;
   }
-  .forget  {
+  .forget {
     text-align: right;
     color: #778beb;
   }
 
   .btn-click {
-    background-color: #341F97;
+    background-color: #341f97;
     color: white;
     width: 50%;
     padding: 10px;
@@ -103,14 +100,15 @@
 
   .text-center {
     text-align: center;
-    color: #636E72;
-
+    color: #636e72;
   }
 
   .icon {
     height: 50px;
     width: 50px;
   }
+
+  .error-feedback {
+    color: var(--bs-form-invalid-color);
+  }
 }
-
-

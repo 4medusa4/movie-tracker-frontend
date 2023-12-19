@@ -1,72 +1,75 @@
 <body>
   <div class="image-container">
-    <!-- <img src="assets/bg.png" alt="bg.png" class="d-block w-100"> -->
-    <div class="form-container">
-      <!-- <div>
-      <img src="assets/login.png">
-    </div> -->
+    <div class="form-container rounded bg-dark">
       <fieldset>
         <legend>
-          <img src="assets/account.png" class="icon">
-        </legend>        
-        <div class="form">
+          <img src="assets/account.png" class="icon" />
+        </legend>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onLoginHandler()"
+          class="bg-dark"
+        >
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input [(ngModel)]="loginEmail" type="email" class="form-control" aria-describedby="emailHelp">
-            <div class="form-text2 error" *ngIf="emailError">{{ emailError }}</div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input [(ngModel)]="loginPassword" type="password" class="form-control" id="exampleInputPassword1">
-            <div class="form-text2 error" *ngIf="passwordError">{{ passwordError }}</div>
-            <div id="emailHelp" class="form-text2 forget">
-              <a href="forgot-password" class="link-underline-primary forget">Forgot your Password ?</a>
+            <label for="" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              aria-describedby="emailHelp"
+              id="exampleInputEmail1"
+              formControlName="loginEmail"
+            />
+            <div
+              *ngIf="loginEmail?.touched && loginEmail?.errors?.['required'] || loginEmail?.errors?.['email']"
+              class="text-danger"
+            >
+              <div
+                *ngIf="loginForm.get('loginEmail')?.errors?.['required']"
+                class="form-text error-feedback"
+              >
+                <em>Email is required</em>
+              </div>
+              <div
+                *ngIf="loginForm.get('loginEmail')?.errors?.['email']"
+                class="form-text error-feedback"
+              >
+                <em>Please enter a valid email</em>
+              </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-click" (click)="onLoginHandler()">LOGIN</button>
-          <hr>
-          <div id="emailHelp" class="form-text text-center">Didn’t have an account yet ?
-            <a href="signup" class="link-underline-primary"> Register Now</a>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              formControlName="loginPassword"
+            />
+            <div
+              *ngIf="
+            loginPassword?.touched && loginPassword?.errors?.['required']"
+              class="form-text error-feedback"
+            >
+              <em>Password is required</em>
+            </div>
           </div>
-          <div class="form-text2 errors" *ngIf="serverError">{{ serverError }}</div>
-        </div>
+          <div id="emailHelp" class="mb-3 w-100 text-end">
+            <a href="forgot-password" class="link-underline-primary form-text"
+              ><em>Forgot your Password ?</em></a
+            >
+          </div>
+          <button type="submit" class="btn btn-click">LOGIN</button>
+          <hr />
+          <div id="emailHelp" class="form-text text-center">
+            Don’t have an account yet ?
+            <a href="signup" class="form-text link-underline-primary"
+              >Register Now</a
+            >
+          </div>
+        </form>
       </fieldset>
     </div>
   </div>
 </body>
-
-<!-- <div class="new-release-movies container mt-3 p-3">
-    <div class="row align-items-center justify-content-center">
-        <div class="poster d-flex flex-wrap justify-content-center">
-            <ng-container>
-                <div class="card mb-5">
-                    <div class="row">
-                    <div class="col-md-4">
-                      <img class="image" src="assets/login.png">
-                    </div>
-                    <div class="col-md-8">
-                      <fieldset>
-                        <legend>Login to Movie Tracker</legend>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1">
-                          <div id="emailHelp" class="form-text2 forget">
-                          <a href="#" class="link-underline-primary forget">Forgot your Password ?</a>
-                      </div>
-                        </div>
-                        <button type="submit" class="btn btn-click">LOGIN</button><hr>
-                        <div id="emailHelp" class="form-text">Didn’t have an account yet ?
-                          <a href="register" class="link-underline-primary"> Register Now</a>
-                        </div>
-                      </fieldset>
-                  </div>
-                  </div>
-                  </div>
-            </ng-container> 
-        </div>
-    </div>
-</div> -->

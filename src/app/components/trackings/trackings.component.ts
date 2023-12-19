@@ -1,15 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ChangeDetectorRef } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { NgModel } from '@angular/forms';
-import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
 
 import { NgZone } from '@angular/core';
-import axios from 'axios';
 @Component({
   selector: 'app-trackings',
   templateUrl: './trackings.component.html',
@@ -59,40 +54,6 @@ export class TrackingsComponent implements OnInit {
     });
   }
 
-
-  // @Input() dates: Date[] = [];
-  // // select date
-  // selectedDayOfWeek: string = '';
-  // dayParts: string[] = ['Morning', 'Afternoon', 'Evening'];
-  // selectedDayParts: boolean[] = this.initializeSelectedDayParts();
-  // initializeSelectedDayParts(): boolean[] {
-  //   return Array.from({ length: this.dayParts.length }, () => false);
-  // }
-
-  // dayPartsForm: FormGroup = new FormGroup({
-  //   dayParts: new FormArray(this.dayParts.map(() => new FormControl(false)))
-  // });
-  // selectedDate: string = '';
-  // ticketCount: number = 0; // Initial number of tickets
-  // selectedLocation: string = ''; // Initialize with an empty string
-  // private pricePerTicket: number = 1000; // Replace with your actual price
-
-  // constructor(private service: MovieApiServiceService, private router: ActivatedRoute, private cdr: ChangeDetectorRef,private formBuilder: FormBuilder, private ngZone: NgZone) {
-  //   this.dayPartsForm = this.formBuilder.group({
-  //     dayParts: new FormArray([]),
-  //   });
-  // }
-
-  // ngOnInit(): void {
-
-  //   let getParamId = this.router.snapshot.paramMap.get('id');
-  //   console.log(getParamId, 'getparamid#');
-  //   this.getMovie(getParamId);
-  //   // Initialize dayPartsForm with checkboxes
-  //   this.dayParts.forEach(() => {
-  //     (this.dayPartsForm.get('dayParts') as FormArray).push(new FormControl(false));
-  //   });
-  // }
 
   getMovie(id: any) {
     this.service.getMovieDetails(id).subscribe((result) => {

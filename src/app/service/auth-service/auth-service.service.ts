@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 export default class AuthService {
 
-  private BASE_URL: string = "http://localhost:8080/api/v1";
+  private BASE_URL: string = environment.BASE_URL;
 
   private isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isAuthenticatedSubject$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
@@ -35,6 +36,7 @@ export default class AuthService {
           observer.complete();
         }).catch(e => {
           errorCallback(e)
+          observer.error(e);
         });
     })
   }
@@ -53,6 +55,7 @@ export default class AuthService {
         }).catch(e => {
           this.isAuthenticatedSubject.next(false); // Set login status to false in case of an error
           errorCallback(e)
+          observer.error(e);
         });
     })
   }

@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule } from 'ngx-toastr';
@@ -67,12 +66,10 @@ import { MovieApiServiceService } from './service/movie-api-service/movie-api-se
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule,
+    ToastrModule.forRoot(),
     FormsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ReactiveFormsModule
   ],
   providers: [MovieApiServiceService, AuthService],
   bootstrap: [AppComponent]

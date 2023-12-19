@@ -47,7 +47,6 @@ export class LoginComponent {
 
   onErrorHandler = (e: Error) => {
     this.toastr.error(e.message, 'Sign In Error');
-
   }
 
   onLoginHandler = () => {

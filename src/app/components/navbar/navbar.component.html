@@ -138,11 +138,12 @@
   </div>
   <div
     class="px-3 py-2 border-bottom mb-3 bg-body-secondary"
-    data-bs-theme="light"
+    data-bs-theme="dark"
   >
     <div class="container d-flex flex-wrap justify-content-center">
       <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
         <input
+          id="search-input"
           type="search"
           class="form-control"
           placeholder="Search..."
@@ -164,13 +165,6 @@
         </button>
         <button type="button" class="btn btn-bd-primary" (click)="gotoSignUp()">
           Sign Up
-        </button>
-        <button
-          type="button"
-          class="btn btn-bd-outline-secondary"
-          (click)="handleSignOut()"
-        >
-          Sign Out
         </button>
       </div>
     </div>

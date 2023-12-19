@@ -1,6 +1,8 @@
-<div class="image-container">
-  <!-- <img src="assets/bg.png" alt="bg.png" class="d-block w-100"> -->
-  <div class="form-container">
+<div
+  class="container-fluide bg-light align-items-center justify-content-center d-flex"
+  style="max-height: 1024px; height: 46vh"
+>
+  <div class="forms-wrapper bg-dark rounded shadow m-auto p-2">
     <div class="payment-buttons">
       <button
         class="payment-button"
@@ -19,12 +21,17 @@
     </div>
     <!-- Form for Pay Now -->
     <div *ngIf="selectedPaymentOption === 'payNow'">
-      <form class="row g-3">
+      <form
+        [formGroup]="frmPayNow"
+        (ngSubmit)="handleOnSubmitPayNow()"
+        class="bg-dark"
+        class="row g-3"
+      >
         <div class="col-md-12">
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpCard"
             placeholder="Enter Card Number"
           />
         </div>
@@ -32,7 +39,7 @@
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpDateExp"
             placeholder="MM/YY"
           />
         </div>
@@ -40,7 +47,7 @@
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpCvv"
             placeholder="CVV"
           />
         </div>
@@ -48,12 +55,13 @@
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpHolderName"
             placeholder="Card Holder Name"
           />
         </div>
         <div class="col-12">
           <button
+            id="btnPayNow"
             type="submit"
             (onsubmit)="handleOnSubmitPayNow()"
             class="btn btn-primary"
@@ -66,12 +74,17 @@
 
     <!-- Form for Pay Later -->
     <div *ngIf="selectedPaymentOption === 'payLater'">
-      <form class="row g-3">
+      <form
+        [formGroup]="frmPayLater"
+        (ngSubmit)="handleOnSubmitPayLater()"
+        class="bg-dark"
+        class="row g-3"
+      >
         <div class="col-md-12">
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpCustomername"
             placeholder="Name"
           />
         </div>
@@ -79,7 +92,7 @@
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpCusromerNic"
             placeholder="NIC"
           />
         </div>
@@ -87,12 +100,13 @@
           <input
             type="text"
             class="form-control"
-            id="input"
+            id="inpCustomerEmail"
             placeholder="E-mail"
           />
         </div>
         <div class="col-12">
           <button
+            id="btnPayLater"
             type="submit"
             (onsubmit)="handleOnSubmitPayLater()"
             class="btn btn-primary"

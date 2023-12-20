@@ -1,65 +1,25 @@
 <div class="navbar-2">
-  <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
-    <div>
-      <input
-        class="search-bar"
-        type="text"
-        placeholder="Search Movies"
-        formControlName="movieName"
-      />
-      <!-- <img class="icon" src="assets/search_icon.png"> -->
-    </div>
-  </form>
-</div>
-
-<div class="row mt-5 search-movie">
-  <div class="col-lg-8" *ngFor="let s of searchResult">
-    <div class="row">
-      <div class="col-lg-3 mt-2 mb-2" *ngIf="s?.poster_path">
-        <img
-          class="img-search"
-          src="https://image.tmdb.org/t/p/original/{{ s?.poster_path }}"
-          *ngIf="s?.poster_path"
-          alt="..."
-          [routerLink]="['/movie', s?.id]"
-        />
-      </div>
-      <div class="col-lg-8 title">
-        <h5>{{ s?.original_title }}</h5>
-        <h6>{{ s.release_date }}</h6>
+  <div class="row mt-5 search-movie">
+    <div class="col-lg-8" *ngFor="let s of searchResults">
+      <div class="row">
+        <div class="col-lg-3 mt-2 mb-2" *ngIf="s?.poster_path">
+          <img
+            class="img-search"
+            src="https://image.tmdb.org/t/p/original/{{ s?.poster_path }}"
+            *ngIf="s?.poster_path"
+            alt="..."
+            [routerLink]="['/movie', s?.id]"
+          />
+        </div>
+        <div class="col-lg-8 title">
+          <h5>{{ s?.original_title }}</h5>
+          <h6>{{ s.release_date }}</h6>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="search-data" *ngIf="showSearchData">
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-  <!-- <h3>The Movie Tracker</h3>
-<img src="assets/search_icon.png"> -->
+  <div class="search-data" *ngIf="searchResults">
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </div>
 </div>
-
-<!-- <div class=" contain mt-5 p-5">
-    <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
-        <div class="row">
-            <div class="mb-3 col-lg-10">
-                <input class="search-bar" type="text" placeholder="Search Movies" formControlName="movieName" [routerLink]="['/search']">
-                 <img class="icon" src="assets/search_icon.png">
-            </div>
-        </div>
-    </form>
-        <div class="row mt-5 search-movie">
-            <div class="col-lg-4" *ngFor="let s of searchResult">
-                <div class="row">
-                    <div class="col-lg-3 mt-3 mb-3" *ngIf="s?.poster_path">
-                        <img class="img-search" src="https://image.tmdb.org/t/p/original/{{s?.poster_path}}" alt="..." [routerLink]="['/movie',s?.id]">
-                    </div>
-                    <div class="col-lg-9">
-                        <h5>{{s?.original_title}}</h5>
-                    </div>
-                </div>
-            </div>
-    </div>
-       
-</div>
-
- -->

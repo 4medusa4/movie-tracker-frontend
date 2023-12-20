@@ -124,16 +124,13 @@ export class TrackingsComponent implements OnInit {
     this.service.addToTrackList(trackingData,
       (response: any) => {
         if (this.autoBookPreference) {
-          // Navigate to UI when preference is checked
           this.router.navigate(['/checkout'], { queryParams: { success: true } })
         } else {
-          // Navigate to UI when preference is not checked
           this.router.navigate(['/tracking-list']);
         }
 
       },
       (error: any) => {
-        // Handle error
         console.error('Error in booking:', error);
       }
     ).subscribe();

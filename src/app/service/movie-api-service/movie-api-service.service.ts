@@ -232,7 +232,7 @@ export class MovieApiServiceService {
 
   getSearchMovie(data: any): Observable<any> {
     // console.log(data,'movie#');
-    return this.http.get(`${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${data.movieName}`);
+    return this.http.get(`${this.TMDB_BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${data.movieName}`);
   }
 
   getMovieDetails(data: any): Observable<any> {

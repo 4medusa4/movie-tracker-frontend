@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
@@ -25,13 +25,13 @@ export class NavbarPrimaryComponent {
     'movieName': new FormControl(null)
   });
 
-  // submitForm() {
-  //   console.log(this.searchForm.value, 'searchForm#')
-  //   this.service.getSearchMovie(this.searchForm.value).subscribe((result) => {
-  //     console.log(result, 'searchmovie#');
-  //     this.searchResult = result.results
-  //   });
-  // }
+  submitForm() {
+    console.log(this.searchForm.value, 'searchForm#')
+    this.service.getSearchMovie(this.searchForm.value).subscribe((result) => {
+      console.log(result, 'searchmovie#');
+      this.searchResult = result.results
+    });
+  }
 
   searchMovieData() {
     this.service.trendingMovieApiData().subscribe((result) => {

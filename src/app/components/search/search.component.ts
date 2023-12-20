@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms'
 import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,21 +9,40 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  searchResults!: any[];
-  private subscription: Subscription | undefined;
+  searchResult: any;
+  searchMovieResult: any;
+  showSearchData: boolean = false;  // Add a boolean flag
 
-  constructor(private movieService: MovieApiServiceService) { }
+
+
+  constructor(private service: MovieApiServiceService, private router: Router, private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.subscription = this.movieService.searchResults$.subscribe(results => {
-      this.searchResults = results;
+    // Subscribe to route parameter changes
+    this.route.params.subscribe(params => {
+      // Check if the route parameter 'id' is present
+      this.showSearchData = !params['id'];
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  searchForm = new FormGroup({
+    'movieName': new FormControl(null)
+  });
+
+  submitForm() {
+    console.log(this.searchForm.value, 'searchForm#')
+    this.service.getSearchMovie(this.searchForm.value).subscribe((result) => {
+      console.log(result, 'searchmovie#');
+      this.searchResult = result.results
+    });
+  }
+
+  searchMovieData() {
+    this.service.trendingMovieApiData().subscribe((result) => {
+      console.log(result, 'searchmovieresult#')
+      this.searchMovieResult = result.results;
+    });
   }
 
 }

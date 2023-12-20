@@ -25,8 +25,6 @@ export class TrackingsComponent implements OnInit {
   ticketCount: number = 0;
   selectedLocation: string = '';
   private pricePerTicket: number = 1000;
-  selectedSeatArrangement: String = '';
-  selectedPartofTheDay: String = '';
 
 
   getDayPartControl(index: number): FormControl {
@@ -116,30 +114,21 @@ export class TrackingsComponent implements OnInit {
 
   onSubmit = () => {
     const trackingData = {
-      currentDate: new Date(),
       selectedDayOfWeek: this.selectedDayOfWeek,
-      partOfTheDay: this.selectedPartofTheDay,
-      arrangement: this.selectedSeatArrangement,
-      numberOfSeats: this.ticketCount,
+      selectedDayParts: this.selectedDayParts,
+      ticketCount: this.ticketCount,
       selectedLocation: this.selectedLocation,
-      autoBooking: this.autoBookPreference,
-      totalAmount: this.calculateTotalAmount(),
-      movieId: this.getMovieResult['id'],
-      bookedDate: this.getMovieResult['release_date'],
-      theatreId: 1
+      totalAmount: this.calculateTotalAmount()
     }
-    console.log('Tracking data:', trackingData);
 
     this.service.addToTrackList(trackingData,
       (response: any) => {
-        if (response.status === 200) {
-          console.log('Successfully added to track list');
-          if (this.autoBookPreference) {
-            this.router.navigate(['/checkout'], { queryParams: { success: true } })
-          } else {
-            this.router.navigate(['/tracking-list']);
-          }
+        if (this.autoBookPreference) {
+          this.router.navigate(['/checkout'], { queryParams: { success: true } })
+        } else {
+          this.router.navigate(['/tracking-list']);
         }
+
       },
       (error: any) => {
         console.error('Error in booking:', error);

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,10 +14,6 @@ export class MovieApiServiceService {
   API_KEY = environment.TMDB_API_KEY
 
   private selectedLanguage: string = 'en'; // Default language
-
-  private searchResults = new BehaviorSubject<any[]>([]);
-  searchResults$ = this.searchResults.asObservable();
-
 
   private axiosInstance = axios.create({
     baseURL: this.BASE_URL
@@ -44,16 +40,6 @@ export class MovieApiServiceService {
 
   getSelectedLanguage(): string {
     return this.selectedLanguage;
-  }
-
-  setSearchResults(results: any[]) {
-    console.log('Setting search results:', results);
-    this.searchResults.next(results);
-  }
-
-  getSearchResult() {
-    console.log('Getting search results:', this.searchResults.getValue());
-    return this.searchResults.getValue();
   }
 
   bannerApiData(): Observable<any> {  //most popular movies watch in sri lanka
@@ -244,14 +230,9 @@ export class MovieApiServiceService {
     return this.http.post(`${this.BASE_URL}/tmdb/movies`, payload);
   }
 
-  getSearchMovieAsync(data: String): Observable<any> {
-    const url = `${this.TMDB_BASE_URL}/search/movie?api_key=${this.API_KEY}&language=en-US&query=${data}&page=1&include_adult=false`;
-    return this.http.get(url).pipe(
-      map((response: any) => {
-        this.setSearchResults(response['results']);
-        return response['results'];
-      })
-    );
+  getSearchMovie(data: any): Observable<any> {
+    // console.log(data,'movie#');
+    return this.http.get(`${this.BASE_URL}/search/movie?api_key=${this.API_KEY}&query=${data.movieName}`);
   }
 
   getMovieDetails(data: any): Observable<any> {
@@ -299,9 +280,14 @@ export class MovieApiServiceService {
 
   addToTrackList(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
     return new Observable((observer) => {
-      this.axiosInstance.post(`${this.BASE_URL}/track-list`, _data)
+      axios.post(`${this.BASE_URL}/track-list`, _data, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`
+        }
+      })
         .then(res => {
-          successCallback(res);
+          successCallback(res)
           observer.next(res.data);
           observer.complete();
         }).catch(e => errorCallback(e))

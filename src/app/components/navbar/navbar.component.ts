@@ -13,7 +13,7 @@ import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-
 })
 
 
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
   searchResult: any;
   searchMovieResult: any;
@@ -23,22 +23,22 @@ export class NavbarComponent implements OnInit{
   constructor(private service: MovieApiServiceService, private router: Router, private authService: AuthService, private route: ActivatedRoute) {
     this.isLoggedIn$ = this.authService.isAuthenticatedSubject$;
   }
-  
-    ngOnInit(): void {
-      // Subscribe to route parameter changes
-      this.route.params.subscribe(params => {
-        // Check if the route parameter 'id' is present
-        this.showSearchData = !params['id'];
-      });
-    }
 
-  
+  ngOnInit(): void {
+    // Subscribe to route parameter changes
+    this.route.params.subscribe(params => {
+      // Check if the route parameter 'id' is present
+      this.showSearchData = !params['id'];
+    });
+  }
 
-  
+
+
+
 
   handleSignOut() {
     console.log('logout');
-    console.log(sessionStorage.getItem('access_token'));
+    console.log(localStorage.getItem('access_token'));
     this.authService.logout().subscribe((res: any) => {
       this.router.navigate(['/login']);
     });

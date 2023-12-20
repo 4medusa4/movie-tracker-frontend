@@ -301,19 +301,16 @@ export class MovieApiServiceService {
   }
 
   addToTrackList(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
+    console.log(localStorage.getItem('access_token'), 'token#')
     console.log(_data, 'tracklist#')
     return new Observable((observer) => {
-      axios.post(`${this.BASE_URL}/track-list`, _data, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`
-        }
-      })
+      this.axiosInstance.post(`${this.BASE_URL}/track-list/track`, _data)
         .then(res => {
           successCallback(res)
           observer.next(res.data);
           observer.complete();
         }).catch(e => errorCallback(e))
-    })
+    }
+    )
   }
 }

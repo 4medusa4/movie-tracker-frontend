@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms'
-import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MovieApiServiceService } from 'src/app/service/movie-api-service/movie-api-service.service';
 
 @Component({
   selector: 'app-navbar-user',

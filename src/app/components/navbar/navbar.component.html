@@ -74,7 +74,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="/movie" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#grid" />
               </svg>
@@ -82,7 +82,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="/bookings" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#table" />
               </svg>
@@ -98,12 +98,31 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <a href="/search" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
-              Customers
+              Search
             </a>
+          </li>
+          <li>
+            <div
+        class="btn-group text-end "
+        role="group"
+        area-label="Basic"
+        *ngIf="!(isLoggedIn$ | async) || !(isLoggedIn$ | async)"
+      >
+        <button
+          type="button"
+          class="btn btn-bd-outline-secondary"
+          (click)="gotoSignIn()"
+        >
+          Sign In
+        </button>
+        <button type="button" class="btn btn-bd-primary" (click)="gotoSignUp()">
+          Sign Up
+        </button>
+      </div>
           </li>
         </ul>
         <div class="flex-shrink-0 dropdown">
@@ -112,6 +131,7 @@
             class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
             data-bs-toggle="dropdown"
             aria-expanded="true"
+            *ngIf="(isLoggedIn$ | async) || (isLoggedIn$ | async)"
           >
             <img
               src="https://github.com/mdo.png"
@@ -128,7 +148,8 @@
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" (click)="handleSignOut()" href="#"
-                >Sign out</a
+                >
+                Sign out</a
               >
             </li>
           </ul>
@@ -136,7 +157,7 @@
       </div>
     </div>
   </div>
-  <div
+  <!-- <div
     class="px-3 py-2 border-bottom mb-3 bg-body-secondary"
     data-bs-theme="dark"
   >
@@ -150,7 +171,7 @@
           aria-label="Search"
         />
       </form>
-      <div
+       <div
         class="btn-group text-end"
         role="group"
         area-label="Basic"
@@ -168,5 +189,5 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
 </header>

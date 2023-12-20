@@ -16,6 +16,8 @@ export class NavbarComponent {
 
 
   handleSignOut() {
+    console.log('logout');
+    console.log(sessionStorage.getItem('access_token'));
     this.authService.logout().subscribe((res: any) => {
       this.router.navigate(['/login']);
     });

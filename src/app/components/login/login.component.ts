@@ -52,7 +52,7 @@ export class LoginComponent {
   onLoginHandler = () => {
     if (this.loginForm.valid) {
       const _data = {
-        'email': this.loginEmail?.value.trim().toLowerCase(),
+        'username': this.loginEmail?.value.trim().toLowerCase(),
         'password': this.loginPassword?.value.trim()
       };
 

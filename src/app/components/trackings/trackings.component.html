@@ -25,7 +25,7 @@
           <div class="mb-3">
             <label for="location" class="form-label">Location</label>
             <select
-              class="form-select select"
+              class="form-select select bg-dark"
               aria-label="Default select example"
               [(ngModel)]="selectedLocation"
               (change)="onLocationChange()"
@@ -44,7 +44,7 @@
             <select
               id="dayOfWeek"
               [(ngModel)]="selectedDayOfWeek"
-              class="form-select select"
+              class="form-select select bg-dark"
             >
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>
@@ -67,7 +67,8 @@
                 type="radio"
                 name="optDayPart"
                 id="optMorn"
-                value="option1"
+                value="Morning"
+                [(ngModel)]="selectedPartofTheDay"
                 checked
               />
               <label class="form-check-label" for="optMorn"> Morning </label>
@@ -78,7 +79,8 @@
                 type="radio"
                 name="optDayPart"
                 id="optAft"
-                value="option2"
+                [(ngModel)]="selectedPartofTheDay"
+                value="Afternoon"
               />
               <label class="form-check-label" for="optAft"> Afternoon </label>
             </div>
@@ -88,7 +90,8 @@
                 type="radio"
                 name="optDayPart"
                 id="optEve"
-                value="option2"
+                [(ngModel)]="selectedPartofTheDay"
+                value="Evening"
               />
               <label class="form-check-label" for="optEve"> Evening </label>
             </div>
@@ -98,7 +101,8 @@
                 type="radio"
                 name="optDayPart"
                 id="optNigt"
-                value="option2"
+                [(ngModel)]="selectedPartofTheDay"
+                value="Night"
               />
               <label class="form-check-label" for="optNigt"> Night </label>
             </div>
@@ -128,7 +132,8 @@
                 type="radio"
                 name="optSeats"
                 id="optFront"
-                value="option1"
+                value="Front"
+                [(ngModel)]="selectedSeatArrangement"
                 checked
               />
               <label class="form-check-label" for="optFront">
@@ -142,7 +147,8 @@
                 type="radio"
                 name="optSeats"
                 id="optMid"
-                value="option2"
+                value="Middle"
+                [(ngModel)]="selectedSeatArrangement"
               />
               <label class="form-check-label" for="optMid"> Middle Rows </label>
             </div>
@@ -153,7 +159,8 @@
                 type="radio"
                 name="optSeats"
                 id="optBack"
-                value="option3"
+                value="Back"
+                [(ngModel)]="selectedSeatArrangement"
               />
               <label class="form-check-label" for="optBack"> Back Rows </label>
             </div>

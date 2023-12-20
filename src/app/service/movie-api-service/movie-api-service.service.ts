@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,6 +14,8 @@ export class MovieApiServiceService {
   API_KEY = environment.TMDB_API_KEY
 
   private selectedLanguage: string = 'en'; // Default language
+  private searchResults = new BehaviorSubject<any[]>([]);
+  searchResults$ = this.searchResults.asObservable();
 
   private axiosInstance = axios.create({
     baseURL: this.BASE_URL
@@ -36,6 +38,26 @@ export class MovieApiServiceService {
     this.selectedLanguage = language;
     console.log('Selected language updated to:', this.selectedLanguage);
 
+  }
+
+  setSearchResults(results: any[]) {
+    console.log('Setting search results:', results);
+    this.searchResults.next(results);
+  }
+
+  getSearchResult() {
+    console.log('Getting search results:', this.searchResults.getValue());
+    return this.searchResults.getValue();
+  }
+
+  getSearchMovieAsync(data: String): Observable<any> {
+    const url = `${this.TMDB_BASE_URL}/search/movie?api_key=${this.API_KEY}&language=en-US&query=${data}&page=1&include_adult=false`;
+    return this.http.get(url).pipe(
+      map((response: any) => {
+        this.setSearchResults(response['results']);
+        return response['results'];
+      })
+    );
   }
 
   getSelectedLanguage(): string {
@@ -279,6 +301,7 @@ export class MovieApiServiceService {
   }
 
   addToTrackList(_data: any, successCallback: Function, errorCallback: Function): Observable<any> {
+    console.log(_data, 'tracklist#')
     return new Observable((observer) => {
       axios.post(`${this.BASE_URL}/track-list`, _data, {
         headers: {

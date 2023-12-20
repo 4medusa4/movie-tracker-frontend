@@ -16,6 +16,8 @@ export class TrackingsComponent implements OnInit {
 
   getMovieResult: any;
   autoBookPreference: boolean = false;
+  selectedSeatArrangement: String = '';
+  selectedPartofTheDay: String = '';
 
   dayParts: string[] = ['Morning', 'Afternoon', 'Evening'];
   selectedDayParts: boolean[] = this.initializeSelectedDayParts();
@@ -114,19 +116,28 @@ export class TrackingsComponent implements OnInit {
 
   onSubmit = () => {
     const trackingData = {
+      currentDate: new Date(),
       selectedDayOfWeek: this.selectedDayOfWeek,
-      selectedDayParts: this.selectedDayParts,
-      ticketCount: this.ticketCount,
+      partOfTheDay: this.selectedPartofTheDay,
+      arrangement: this.selectedSeatArrangement,
+      numberOfSeats: this.ticketCount,
       selectedLocation: this.selectedLocation,
-      totalAmount: this.calculateTotalAmount()
+      autoBooking: this.autoBookPreference,
+      totalAmount: this.calculateTotalAmount(),
+      movieId: this.getMovieResult['id'],
+      bookedDate: this.getMovieResult['release_date'],
+      theatreId: 1
     }
 
     this.service.addToTrackList(trackingData,
       (response: any) => {
-        if (this.autoBookPreference) {
-          this.router.navigate(['/checkout'], { queryParams: { success: true } })
-        } else {
-          this.router.navigate(['/tracking-list']);
+        if (response.status === 200) {
+          console.log('Successfully added to track list');
+          if (this.autoBookPreference) {
+            this.router.navigate(['/checkout'], { queryParams: { success: true } })
+          } else {
+            this.router.navigate(['/tracking-list']);
+          }
         }
 
       },
